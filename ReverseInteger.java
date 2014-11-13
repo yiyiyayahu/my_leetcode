@@ -28,7 +28,7 @@ public class Solution {
             //To see if this is an overflow or not
             if(result > (Integer.MAX_VALUE - digit) / 10) {
                 result = 0;
-                x = 0;
+                break;
             } else {
                 result = result * 10 + digit;
                 x = x / 10;
