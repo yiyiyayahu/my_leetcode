@@ -29,3 +29,14 @@ public class Solution {
         }
     }
 }
+
+/*
+f(0) = f(1) = 1
+f(2) = 2       1         2
+              /           \
+             2              1
+f(3) [1,2,3] if 1 is the root: then left 2--f(2); if 2 is the root then left 1 -- f(1), if 3 is the root then left 2 --f(2)
+f(4) [1,2,3,4] f(3) + f(2) + f(2) + f(3)
+f(5) [1,2,3,4,5] f(4) + f(3) + f(2) * f(2) + f(3) +f(4)
+f(n) = f(0) * f(n-1) + f(1) * f(n-2) + ... + f(n-1) * f(0)
+*/
