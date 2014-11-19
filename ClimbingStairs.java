@@ -28,3 +28,12 @@ public class Solution {
 f(0)=f(1)=1, f(2)=2
 f(n)=f(n-1)+f(n-2) first time climb one stair or first time climb two stairs
 */
+    public int climbStairs(int n) {
+        int[] arr = new int[n+1];
+        arr[0] = 1;
+        arr[1] = 1;
+        for(int i = 2; i <= n; i++) {
+            arr[i] = arr[i-1] + arr[i-2];
+        }
+        return arr[n];
+    }
