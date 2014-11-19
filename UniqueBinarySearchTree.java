@@ -40,3 +40,16 @@ f(4) [1,2,3,4] f(3) + f(2) + f(2) + f(3)
 f(5) [1,2,3,4,5] f(4) + f(3) + f(2) * f(2) + f(3) +f(4)
 f(n) = f(0) * f(n-1) + f(1) * f(n-2) + ... + f(n-1) * f(0)
 */
+
+/*Iterative:*/
+    public int numTrees(int n) {
+        int[] arr = new int[n+1];
+        arr[0] = 1;
+        arr[1] = 1;
+        for(int j = 2; j <= n; j++) {
+            for(int i = 0; i < j; i++) {
+                arr[j] += arr[i] * arr[j-1-i];
+            }
+        }
+        return arr[n];
+    }
