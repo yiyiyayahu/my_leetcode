@@ -37,6 +37,8 @@ After calling your function, the tree should look like:
  *     TreeLinkNode(int x) { val = x; }
  * }
  */
+ 
+ /*Bad solution..... Did not use constant extra space*/
 public class Solution {
     public void connect(TreeLinkNode root) {
         if(root == null) return;
