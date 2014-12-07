@@ -62,3 +62,24 @@ public class Solution {
         }
     }
 }
+
+/*Updated: using only one extra space*/
+public class Solution {
+    public void connect(TreeLinkNode root) {
+        if(root == null) return;
+        if(root.left == null || root.right == null) return;
+        
+        TreeLinkNode p = root;
+
+        while(p != null) {
+            p.left.next = p.right;
+            if(p.next != null) {
+                p.right.next = p.next.left;
+            } else {
+                p.right.next = null;
+            }
+            p = p.next;
+        }
+        connect(root.left);
+    }
+}
