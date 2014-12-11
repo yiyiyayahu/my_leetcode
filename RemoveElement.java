@@ -32,4 +32,17 @@ public class Solution {
     }
 }
 
-/*Follow up: if not change the relative order of original array???*/
+/*Follow up: if not change the relative order of original array?*/
+public class Solution {
+    public int removeElement(int[] A, int elem) {
+        if(A == null) return 0;
+        int j = 0;
+        
+        for(int i = 0; i < A.length; i++) {
+            if(A[i] != elem) {
+                A[j++] = A[i];
+            }
+        }
+        return j;
+    }
+}
