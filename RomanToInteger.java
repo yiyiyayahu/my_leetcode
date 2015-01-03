@@ -15,7 +15,7 @@ public class Solution {
         int result = 0;
         int prev = 0;
         for(int i = 0; i < s.length(); i++) {
-        	int current = getNum(s.charAt(i));
+            int current = getNum(s.charAt(i));
             if(current > prev && prev != 0) {
                 result += current - prev * 2;
             } else  {
