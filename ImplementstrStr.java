@@ -23,7 +23,7 @@ public class Solution {
                         tmp++;
                         j++;
                     }
-                    if(j == n_len) {return i;}
+                    if(j == n_len) return i;
                 }
             } 
         }
