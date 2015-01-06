@@ -30,7 +30,8 @@ return its level order traversal as:
 public class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
-        
+        /*important!!! Cannot initiate like this: List<List<Integer>> result = new ArrayList<ArrayList<Integer>>(); 
+        List<> is interface here, index 0 can be LinkedList, index 1 can be ArrayList ...*/
         if(root == null) return result;
         
         Queue<TreeNode> queue = new LinkedList<TreeNode>();
