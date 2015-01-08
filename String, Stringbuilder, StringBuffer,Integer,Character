@@ -1,0 +1,6 @@
+String: immutable
+Integer: immutable
+Character: immutable
+
+StringBuilder: non-synchronized (faster, so in the interview, use this class)
+StringBuffer: synchronized (slower since there is a lock)
