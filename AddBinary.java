@@ -35,7 +35,7 @@ public class Solution {
             lb --;
         }
 
-        if(la < 0 && lb < 0 && carry ==1) sb.append(carry+"");
+        if(la < 0 && lb < 0 && carry ==1) sb.append('1');
         return sb.reverse().toString();
     }
 }
