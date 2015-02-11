@@ -18,7 +18,6 @@ public class Solution {
         StringBuilder sb = new StringBuilder();
         
         for(int j = 2; j <= n; j++) {
-            
             char c = s.charAt(0);
             int num = 1;            
             for(int i = 1; i < s.length(); i++) {            
@@ -26,7 +25,7 @@ public class Solution {
                 if(tmp == c) {
                     num ++;
                 } else {
-                	  sb.append(num).append(c);
+                    sb.append(num).append(c);
                     c = tmp;
                     num = 1;
                 }
