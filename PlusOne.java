@@ -17,10 +17,17 @@ public class Solution {
             }
         }
         int[] result = new int[digits.length + 1];
-        for(int i = 1; i < digits.length; i++) {
-            result[i] = 0;
-        }
         result[0] = 1;
         return result;
     }
 }
+
+
+/*
+the most significant digit is at the head of the list(at index zero)
+
+The following is not necessary, since initiation of the array is all zeros.
+        for(int i = 1; i < digits.length; i++) {
+            result[i] = 0;
+        }
+*/
