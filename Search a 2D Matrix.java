@@ -39,3 +39,4 @@ public class Solution {
         return false;
     }
 }
+//应该用二分法的，明天想想
