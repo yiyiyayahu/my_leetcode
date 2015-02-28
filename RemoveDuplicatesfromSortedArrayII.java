@@ -12,22 +12,22 @@ public class Solution {
     public int removeDuplicates(int[] A) {
         if(A == null || A.length == 0) return 0;
 		
-		int index = 1, curr = A[0], result = A.length, times = 1;
-		for(int i = 1; i < A.length; i++) {
-			if(A[i] != curr) {
-				A[index ++] = A[i];
-				curr = A[i];
-				times = 1;
+	int index = 1, curr = A[0], result = A.length, times = 1;
+	for(int i = 1; i < A.length; i++) {
+		if(A[i] != curr) {
+			A[index ++] = A[i];
+			curr = A[i];
+			times = 1;
+		} else {
+			if(times >= 2) {
+				result --;
 			} else {
-				if(times >= 2) {
-					result --;
-				} else {
-					A[index ++] = A[i];
-				}
-				times ++;
+				A[index ++] = A[i];
 			}
+			times ++;
 		}
-		return result;
+	}
+	return result;
 
     }
 }
