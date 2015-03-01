@@ -17,6 +17,33 @@ Given 1->1->1->2->3, return 2->3.
  *     }
  * }
  */
+ 
+/*用两个指针就好多了*/
+public class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+		if(head == null) return null;
+		ListNode dummy = new ListNode(Integer.MIN_VALUE);
+		dummy.next = head;
+		
+		ListNode curr = head;
+		ListNode pre = dummy;
+
+		while(curr != null) {
+			while(curr.next != null && pre.next.val == curr.next.val) {
+				curr = curr.next;
+			}
+			if(pre.next == curr) {
+				pre = pre.next;
+			} else {
+				pre.next = curr.next;
+			}
+			curr = curr.next;
+		}
+		return dummy.next;
+    }
+}
+
+
 public class Solution {
     public ListNode deleteDuplicates(ListNode head) {
 		if(head == null) return null;
