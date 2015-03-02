@@ -43,3 +43,7 @@ public class Solution {
     	return result;
     }
 }
+/*
+递归的思想，知道前n-1个元素的结果，只要把第n个元素塞到之前每个的list里面即可
+要注意的是，不能直接result=pre这样赋值，或者newList=l，因为java是reference的，这样赋值改result的同时也改了pre
+*/
