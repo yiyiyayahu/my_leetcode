@@ -17,6 +17,50 @@ If S = [1,2,2], a solution is:
 ]
 */
 
+/*
+改进了一下code，后面那个多比较了好多，其实是不必要的
+如果看到这个元素和前面一个元素重复，那其实只要在之前的那个result list里面的后面一半添加上新的元素就可以了
+想一下，[1,2,2,2]
+[1]  --> [],[1]         
+[1,2]--> [],[1] + [2],[1,2]
+[1,2,2]的时候就不用再往[],[1]里面加元素了，因为在2第一次出现的时候已经这样做过了
+[1,2,2] --> [],[1],[2],[1,2] + [2,2],[1,2,2]            从preList的index=2的元素开始加，这样preList的前四位就都加过了
+[1,2,2,2] --> [],[1],[2],[1,2],[2,2],[1,2,2] + [2,2,2],[1,2,2,2]  从preList的index=4的元素开始加
+注意不是每次都是start=pre.size()/2,而是前面一次的pre.size()的大小，所以新传入了一个参数
+*/
+public class Solution {
+    public List<List<Integer>> subsetsWithDup(int[] num) {
+        if(num == null) return null;       
+        Arrays.sort(num);
+        ArrayList<Integer> size = new ArrayList<Integer>(0);
+        return helper(num, num.length, size);
+    }
+    
+    public List<List<Integer>> helper(int[] S, int n, ArrayList<Integer> size) {
+    	List<List<Integer>> result = new ArrayList<List<Integer>>();
+    	if(n == 0) {
+    		ArrayList<Integer> list = new ArrayList<Integer>();
+    		result.add(list);
+    		return result;
+    	}
+    	List<List<Integer>> pre = helper(S,n-1,size);
+    	result = new ArrayList<List<Integer>>(pre);
+    	int curr = S[n-1];
+    	
+    	int start = 0;
+    	if(n >= 2 && S[n-1] == S[n-2]) {
+    		start = size.get(0);
+    	}
+    	for(int i = start; i < pre.size(); i++) { 		
+    		List<Integer> newList = new ArrayList<Integer>(pre.get(i));
+    		newList.add(curr);
+    		result.add(newList);
+    	}
+    	size.add(0, pre.size());
+    	return result;
+    }
+}
+
 public class Solution {
     public List<List<Integer>> subsetsWithDup(int[] num) {
         if(num == null) return null;       
