@@ -53,8 +53,8 @@ public class Solution {
     			}
     		}
     		while(i > 0 && num[i] == num[i-1]) {
-				  i --;
-			  }
+			i --;
+		}
     	}
     	return result;
     }
