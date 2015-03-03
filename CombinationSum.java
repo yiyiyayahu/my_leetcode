@@ -14,6 +14,9 @@ A solution set is:
 [2, 2, 3] 
 */
 
+/*
+感觉这种需要没有duplicates的题要找的时候规定一个顺序，那个end的参数实际上就是防止重复找的，从后面往前的顺序找
+*/
 public class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
