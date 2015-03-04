@@ -7,7 +7,11 @@ Find the minimum element.
 
 You may assume no duplicate exists in the array.
 */
-    
+   
+/*
+这个解法显然是不好的，上面的array是sorted，而且还只rotate一次，要改进
+这道题应该和Search in Rotated Sorted Array这个差不多
+*/
 public class Solution {
     public int findMin(int[] num) {
         if(num == null || num.length == 0) return Integer.MIN_VALUE;
