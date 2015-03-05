@@ -7,6 +7,10 @@ Would this affect the run-time complexity? How and why?
 Write a function to determine if a given target is in the array.
 */
 
+/*
+与1不同的是，有重复元素的话就会出现A[start] == A[mid]的情况，这样就不好判断那部分是sorted了
+只能遇到重复元素的时候指针后移。那worst case呢，复杂度就是O(n)，而1的复杂度是O(logn)
+*/
 public class Solution {
     public boolean search(int[] A, int target) {
         if(A == null || A.length == 0) return false;
