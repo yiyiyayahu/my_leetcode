@@ -24,12 +24,11 @@ public class Solution {
 	    if(start == end) return num[start];
 		int mid = (start + end)/2;
 		int left_min = Integer.MAX_VALUE, right_min = Integer.MAX_VALUE;
-		if(num[start] < num[mid]) {
+		if(num[start] <= num[mid]) {
 			left_min = num[start];
 			if(mid < end) right_min = findMinHelper(num, mid+1, end);
 		} else {
-		    if(start == mid) left_min = num[start];
-			else left_min = findMinHelper(num, start+1, mid);
+			left_min = findMinHelper(num, start+1, mid);
 			if(mid < end) right_min = findMinHelper(num, mid+1, end);
 		}
 		return Math.min(left_min, right_min);
