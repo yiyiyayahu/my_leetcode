@@ -4,9 +4,18 @@ Given an integer, convert it to a roman numeral.
 Input is guaranteed to be within the range from 1 to 3999.
 */
 
+/*很基本的题，开始没想好怎么写code，后来发现：
+1-3就是自己重复比如I,II,III
+4是自己加下一位   IV
+5是下一位 V
+6-8是下一位加自己重复VI,VII,VIII
+9是自己加自己乘10的那位，IX
+但是感觉code写的不是很简洁
+*/
+
 public class Solution {
     public String intToRoman(int num) {
-        if(num == 0) return null;
+        if(num < 1 || num > 3999) return null;
     		
     	StringBuilder sb = new StringBuilder();
     	int unit = 1000;
