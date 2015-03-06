@@ -21,7 +21,7 @@ public class Solution {
         if(begin > end) return null;
         if(begin == end) return new TreeNode(num[begin]);
         
-        int mid = begin + (end - begin) / 2 ;
+        int mid = (begin + end) / 2 ;
         TreeNode n = new TreeNode(num[mid]);
         
         n.left = sortedArrayBST(num, begin, mid-1);
