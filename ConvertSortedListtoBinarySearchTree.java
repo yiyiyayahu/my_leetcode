@@ -1,5 +1,13 @@
+ /*
+ Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
+ */
 
-
+/*
+这个解法肯定是不好的，因为每次都移动指针挪到中间的位置
+那比如第一次找root，移动N/2次，
+然后找左边的移动N/4次，找右边的移动N/4次，加起来还是N/2次
+一共要找logN次，所以复杂度就是O(NlogN)
+*/
     public static TreeNode sortedListToBST(ListNode head) {
     	if(head == null) return null;
     	int size = 0;
