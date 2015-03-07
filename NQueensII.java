@@ -11,7 +11,6 @@ public class Solution {
     	if(index == n) {count ++;return;}
     	for(int value = 0; value < n; value++) {
     		 boolean isvalid = true;
-    		 A[index] = value;
     		 for(int j = 0; j < index; j++) {
     			 int diff = Math.abs(index-j) - Math.abs(value-A[j]);
     			 if(diff == 0 || diff == Math.abs(index-j)) {
@@ -20,6 +19,7 @@ public class Solution {
     			 }
     		 }
     		 if(isvalid) {
+    		     A[index] = value;
     			 getNQueens(A, index+1, n);
     		 }
     	}
