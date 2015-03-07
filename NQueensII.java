@@ -19,8 +19,8 @@ public class Solution {
     			 }
     		 }
     		 if(isvalid) {
-    		    A[index] = value;
-    	        getNQueens(A, index+1, n);
+    			 A[index] = value;
+    			 getNQueens(A, index+1, n);
     		 }
     	}
     }
