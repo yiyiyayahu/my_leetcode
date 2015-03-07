@@ -5,6 +5,17 @@ Now, instead outputting board configurations, return the total number of distinc
 */
 
 
+//思路就是::
+/*
+ * for(int value = 0; value < n; value ++) {
+ * 		if(value is valid) {
+ * 			A[index] = value;
+ * 			call getNQueens(A, index + 1, n);
+ * 		}
+ * }
+ */
+
+
 /*
 开始想的是把getNQueens return一个int[]，但是这个的问题是，
 比如if(isValid) {A[index]=value;return getNQueens(A, index+1, n);} 那就只能返回一个结果
