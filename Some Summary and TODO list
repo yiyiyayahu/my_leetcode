@@ -1,0 +1,11 @@
+NQueens属于NP hard，时间复杂度肯定是指数级的，所能做的就是优化搜索
+NQueens大概是n个位置，往里面填valid的数，然后recursive
+类似的题大概有：
+1) Combinations
+2) Combination Sum I,II
+3) Permutation Sequence
+4) Permutations I, II
+5) Next Permutation
+6) Palindrome Partitioning I, II
+7) Word Break I, II
+8) Sudoku Solver (应该之前把valid sudoku做完会好一些？)
