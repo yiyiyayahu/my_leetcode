@@ -31,6 +31,10 @@ root = new TreeNode(2)
 head = head.next 指向3
 root.right = helper(2,2) -> left = helper(2,1)=null, root = new TreeNode(3), head = head.next指向null, root.right=helper(3,2)=null
 */
+
+/*
+Leetcode上面的解答里面说这样写有助于防止overflow----》 int mid = start + (end - start) / 2;
+*/
 public class Solution {
     static ListNode head;
     public TreeNode sortedListToBST(ListNode head) {
