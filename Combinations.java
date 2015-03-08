@@ -54,7 +54,7 @@ public class Solution {
     		return;
     	}
     	for(int i = pre; i <= n; i ++) {
-    	  //和NQueens不同的是，如果int[] array可能可以直接A[index] = i; 但是这里list应该是reference的，所以就只能新建一个object
+    	  //和NQueens不同的是，如果int[] array可能可以直接A[index] = i; 但是这里list应该是pass by reference的，所以就只能新建一个object
     		List<Integer> list = new ArrayList<Integer>(A);
     		list.add(i);
     		getNext(list, n, index + 1, k, i+1);
