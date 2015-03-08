@@ -45,10 +45,10 @@ public class Solution {
     			for(int x = i; x < i + 3; x ++) {
     				for(int y = j; y < j + 3; y ++) {
     					char value = board[x][y];
-            			 if(value != '.' ) {
-                			 if(appeared[value-'1'] == true) return false;
-                			 else appeared[value-'1'] = true;
-            			 }
+                        if(value != '.' ) {
+                            if(appeared[value-'1'] == true) return false;
+                              else appeared[value-'1'] = true;
+                        }
     				}
     			}
     		}
