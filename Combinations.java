@@ -38,6 +38,32 @@ If n = 4 and k = 2, a solution is:
 为了避免重复，可以规定顺序
 */
 public class Solution {
+    static List<List<Integer>> result;
+    public List<List<Integer>> combine(int n, int k) {
+    	result = new ArrayList<List<Integer>>();
+    	if(k > n) return result;
+    	
+    	List<Integer> A = new ArrayList<Integer>(k);
+    	getNext(A, n, 0, k, 1);
+    	return result;
+    }
+    
+    public void getNext(List<Integer> A, int n, int index, int k, int pre) {
+    	if(index == k) {
+    		result.add(A);
+    		return;
+    	}
+    	for(int i = pre; i <= n; i ++) {
+    		List<Integer> list = new ArrayList<Integer>(A);
+    		list.add(i);
+    		getNext(list, n, index + 1, k, i+1);
+    	}
+    }
+}
+
+
+//previous solution
+public class Solution {
     public List<List<Integer>> combine(int n, int k) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
     	if(k > n) return result;
