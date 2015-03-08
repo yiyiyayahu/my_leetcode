@@ -1,3 +1,15 @@
+/*
+Determine if a Sudoku is valid, according to: Sudoku Puzzles - The Rules.
+
+The Sudoku board could be partially filled, where empty cells are filled with the character '.'.
+
+
+A partially filled sudoku which is valid.
+
+Note:
+A valid Sudoku board (partially filled) is not necessarily solvable. Only the filled cells need to be validated.
+*/
+
 public class Solution {
     public boolean isValidSudoku(char[][] board) {
         boolean[] appeared = new boolean[9];
@@ -33,10 +45,10 @@ public class Solution {
     			for(int x = i; x < i + 3; x ++) {
     				for(int y = j; y < j + 3; y ++) {
     					char value = board[x][y];
-            			if(value != '.' ) {
-                			if(appeared[value-'1'] == true) return false;
-                			else appeared[value-'1'] = true;
-            			}
+            			 if(value != '.' ) {
+                			 if(appeared[value-'1'] == true) return false;
+                			 else appeared[value-'1'] = true;
+            			 }
     				}
     			}
     		}
