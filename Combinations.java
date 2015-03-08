@@ -55,13 +55,23 @@ public class Solution {
     	}
     	for(int i = pre; i <= n; i ++) {
     	  //和NQueens不同的是，如果int[] array可以直接A[index] = i; 但是这里list因为每次都是add，而不是改index上面的数字，所以就只能新建一个object
+    		//初始化的时候虽然给了ArrayList A一个k的初始值，但是这个是capacity不是A的size，
+    		//所以如果A的size是0的话，我没有办法通过A.set(index,i)的方法来实现类似A[index]=i的功能,会有IndexOutOfBoundsException
     		List<Integer> list = new ArrayList<Integer>(A);
     		list.add(i);
     		getNext(list, n, index + 1, k, i+1);
     	}
     }
 }
+/*
 
+You're confusing the size of the array list with its capacity:
+
+the size is the number of elements in the list;
+the capacity is how many elements the list can potentially accommodate without reallocating its internal structures.
+When you call new ArrayList<Integer>(10), you are setting the list's initial capacity, not its size. 
+In other words, when constructed in this manner, the array list starts its life empty.
+*/
 
 //previous solution
 public class Solution {
