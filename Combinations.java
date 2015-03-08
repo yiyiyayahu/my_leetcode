@@ -35,6 +35,7 @@ If n = 4 and k = 2, a solution is:
 /*
 如果按照NQueens的那种思路来做的话，其实是往k个位置里面填数字，填好了就返回，不然就接着填
 比如[1,2,3] k=2 就把这三个数字填到2个位置上面去
+为了避免重复，可以规定顺序
 */
 public class Solution {
     public List<List<Integer>> combine(int n, int k) {
