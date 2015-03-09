@@ -13,6 +13,17 @@ You may assume that there will be only one unique solution.
 其实我觉得我这样就只能有一个循环，然后就截止了哇，就这样一直填一直填下去，注释的地方我不知道怎么弄
 所以这个时候就只能让helper函数返回一个值了，如果按照当前board[i][j]=c的这个情况看能不能走下去，
 如果不能return false, 然后board[i][j]置为'.'，再在这个for循环里面再弄一下，再试一次
+
+
+完完全全想错了。。。其实你想啊，如果这个程序走不下去的话，我根本不会hit到最后的j==9诶，因为如果isValid没找到的话，我i无法加1，程序就执行不下去啊，这时候就会重新来嘛
+我这里少了一步，就是我调用完board[i][j] = c; helper(board, i+1, j);之后我应该把board[i][j]重置为'.'不然真的就是只能走一次
+但是为什么这样改了之后还是不行呢，因为当我找到了这样一个valid的board之后，到了if(j==9)了，我就直接return了！！！
+return意味着什么，又回到上一层了，又重置为'.'了，所以输出的结果还是初始的board啊
+这里我只要能找到一个方式记录下来当前board的信息，就成了。
+想想NQueens和后来改的Combinations，都是这样做的啊，在return那里用static记录当前的信息，或者做一些什么其他操作！！！
+
+看答案的坏处就是以为只有答案才是对的，自己想的是错的，自己怎么就没想到答案那样子呢。。。。应该像答案学习嘛。。。其实就是不理解
+以后要试着在脑中把程序走一遍，这样就清晰多了！！！
 public void helper(char[][] board, int i, int j) {
     if(j == 9) return;
     if(i >= 9) helper(board,0,j+1);
