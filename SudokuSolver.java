@@ -41,17 +41,17 @@ public class Solution {
     	if(j == 9) return true;
     	if(i >= 9) return helper(board,0,j+1);
     	
-		if(board[i][j] == '.') {
-			for(char c = '1'; c <= '9'; c++) {				
-				if(isValid(board, i, j, c)) {
-					board[i][j] = c;
-					if(helper(board,i+1,j)) return true;
-				}
-				board[i][j] = '.';
+	if(board[i][j] == '.') {
+		for(char c = '1'; c <= '9'; c++) {				
+			if(isValid(board, i, j, c)) {
+				board[i][j] = c;
+				if(helper(board,i+1,j)) return true;
 			}
-		} else {
-			return helper(board,i+1,j);
+			board[i][j] = '.';
 		}
+	} else {
+		return helper(board,i+1,j);
+	}
     	
     	return false;
     }
