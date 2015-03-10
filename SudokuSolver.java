@@ -42,6 +42,67 @@ public void helper(char[][] board, int i, int j) {
     }	
 }
 */
+//可以这样改，但是其实也没有必要存到一个result的array里面，我想要的效果只是在j==9return到上一层的时候不要把board[i][j]重置为'.'就可以了
+    static char[][] result;
+    public static void solveSudoku(char[][] board) {
+    	if(board == null || board.length != 9 || board[0].length != 9) return;
+    	 	
+    	helper(board, 0, 0);
+    }
+    public static void helper(char[][] board, int i, int j) {
+    	if(j == 9) {
+    		result = new char[9][9];
+    		for(int x = 0; x < 9; x ++) {
+    			for(int y = 0; y < 9; y++) {
+    				result[x][y] = board[x][y];   				
+    			}
+    		}   
+		return;
+    	}
+    	if(i >= 9) helper(board,0,j+1);
+    	else {
+	    	if(board[i][j] == '.') {
+	    		for(char c = '1'; c <= '9'; c++) {					
+					if(isValid(board, i, j, c)) {
+						board[i][j] = c;
+						helper(board, i+1, j);  
+						if(result == null) board[i][j]='.';
+					}
+					
+	    		}
+	    	} else {
+	    		helper(board, i+1, j);
+	    	}
+    	}	
+    }
+//所以用个boolean记录就可以的，重点是这一步if(finished == false) board[i][j]='.';
+    static boolean finished;
+    public static void solveSudoku(char[][] board) {
+    	if(board == null || board.length != 9 || board[0].length != 9) return;
+    	 	
+    	helper(board, 0, 0);
+    }
+    public static void helper(char[][] board, int i, int j) {
+    	if(j == 9) {
+    		finished = true;
+			return;
+    	}
+    	if(i >= 9) helper(board,0,j+1);
+    	else {
+	    	if(board[i][j] == '.') {
+	    		for(char c = '1'; c <= '9'; c++) {					
+					if(isValid(board, i, j, c)) {
+						board[i][j] = c;
+						helper(board, i+1, j);  
+						if(finished == false) board[i][j]='.';
+					}
+					
+	    		}
+	    	} else {
+	    		helper(board, i+1, j);
+	    	}
+    	}	
+
 public class Solution {
     public void solveSudoku(char[][] board) {
         if(board == null || board.length != 9 || board[0].length != 9) return;
