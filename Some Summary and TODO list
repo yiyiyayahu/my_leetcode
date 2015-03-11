@@ -9,3 +9,18 @@ NQueens大概是n个位置，往里面填valid的数，然后recursive
 6) Palindrome Partitioning I, II
 7) Word Break I, II
 8) Sudoku Solver                    --done
+
+
+March, 2nd  周一 4道题
+March, 3rd  周二 3道题+锻炼1小时
+March, 4th  周三 2道题
+March, 5th  周四 1道题+锻炼一小时
+（NQueens做不出，哈哈，我是递减数列么。。。）
+March, 6th  周五 1道题
+March, 7th  周六 3道题
+(NQueensI和II总算是想通了做完了，撒花)
+March, 8th 周日 1道题
+(Sudoku Solver还要再想想怎么改自己的code)
+March, 9th 周一 0道题
+(唉，今天晚上回来改了一下Sudoku的code，之后permutation sequence怎么都写不对，直接一直找到k会有time limit exception)
+March, 10th 周二 2道题 permutation sequence写好了+NumberOf1bits（java怎么写再想想）
