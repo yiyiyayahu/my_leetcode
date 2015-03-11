@@ -15,6 +15,54 @@ Given n and k, return the kth permutation sequence.
 Note: Given n will be between 1 and 9 inclusive.
 */
 
+public class Solution {
+
+	public String getPermutation(int n, int k) {
+		char[] arr = new char[n];
+		int numOfPerms = 1;
+		for(int i = 1; i < n; i++) {
+			numOfPerms *= i;
+		}
+		
+		int start = 0;
+		int j = 0;
+		while(j < n) {
+			start = k/numOfPerms;         			
+			if(k%numOfPerms != 0) {
+				start = start + 1;
+				k = k%numOfPerms;	
+			}
+			else k = numOfPerms;
+	
+			
+			int count = 0;
+			for(int i = 1; i <= n; i++) {
+				if(isValid(arr, i, j)) {
+					if(start == 0) {arr[j] = (char)(48+i); break;}
+					count ++;
+					if(count == start) {
+						arr[j] = (char) (48+i);
+						break;
+					}
+				}
+			}
+			if(j < n-1 && numOfPerms > 1) numOfPerms = numOfPerms/(n-1-j);
+			else numOfPerms = 1;
+			j++;
+		}
+
+		return String.valueOf(arr);
+    }
+
+	public boolean isValid(char[] arr, int num, int level) {
+		for(int i = 0; i < level; i++) {
+			char c = (char) (48+num);
+			if(arr[i] == c) return false;
+		}
+		return true;
+	}
+}
+
 /*
 我自己测试的时候，觉得这个方法是OK的，就是有结果的，但是很显然时间复杂度很不理想
 当然，因为刚刚学会NQueens的这种解法，想尝试一下
