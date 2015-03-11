@@ -10,8 +10,20 @@ Special thanks to @ts for adding this problem and creating all test cases
 /*
 test没过，问题应该出在这个unsigned int上面了，不是特别懂，unsigned int应该就是range比较大，因为1开头的数字不再是负数。。。
 那我这咋办，把负数的情况单独考虑？
-貌似第一个fail的数字是2147483648，应该返回1的，我就直接返回0了。。。
+貌似第一个fail的数字是2147483648，应该返回1的，我就直接返回0了。。。我是不是应该unsigned转成signed啊，如何转？？？
 */
+//用C写就过了。。。这java肿么弄啊。。。。。
+int hammingWeight(uint32_t n) {
+    	int count = 0;
+        while(n>0) {
+        	if((n^1) < n) {
+        		count ++;
+        	}
+        	n = n >> 1;
+        }
+        return count;
+}
+
 public class Solution {
     // you need to treat n as an unsigned value
     public int hammingWeight(int n) {
