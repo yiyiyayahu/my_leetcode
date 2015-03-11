@@ -15,6 +15,18 @@ Given n and k, return the kth permutation sequence.
 Note: Given n will be between 1 and 9 inclusive.
 */
 
+/*
+这道题后来写了半天才写对
+其实对于k，可以一次递归求出每一位应该放什么，但是最开始总是想错了，而且还有好多边界情况
+比如n=4的情况吧，那也是填位置[x,x,x,x]，组合的可能个数分别是n!,(n-1)!,(n-2)!,...,1
+以1开头的一共有这么多种情况[1,2,3,4],[1,2,4,3],[1,3,2,4],[1,3,4,2],[1,4,2,3],[1,4,3,2]...
+那第一位的startElem很有可能就是k/(n-1)!填第二位的时候k=k%(n-1)!,startElem=k/(n-2)!
+这里的问题是，如果k=5，那startElem=0; k=6, startElem=1,之后k就置为0了，这很显然是不对的
+其实startElem应该取k/(n-1)!的上线！也就是说对于5和6来说都应该是1
+而且对于整除的这种情况，应该是开头为x的最后一种可能，所以k不用改变成k%(n-1)!而应该等于(n-2)!
+剩下要考虑的就是j=n的时候，(n-j)!=1
+*/
+
 public class Solution {
 
 	public String getPermutation(int n, int k) {
@@ -33,7 +45,6 @@ public class Solution {
 				k = k%numOfPerms;	
 			}
 			else k = numOfPerms;
-	
 			
 			int count = 0;
 			for(int i = 1; i <= n; i++) {
@@ -50,7 +61,6 @@ public class Solution {
 			else numOfPerms = 1;
 			j++;
 		}
-
 		return String.valueOf(arr);
     }
 
