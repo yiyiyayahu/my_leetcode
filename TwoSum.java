@@ -12,7 +12,7 @@ Output: index1=1, index2=2
 /*
 我觉得没有什么好方法
 1）如果要求时间复杂度低的话就只能是hashmap了，这样就是O(n)但是space也是O(n)
-2）要么就是brute force了，对于每个值，遍历所有的搜索，那时间是O(n^2)，空间是O(1)
+2）要么就是brute force了，对于每个值，遍历所有的搜索，那时间是O(n^2)，空间是O(1)，不过这种做法过不了test
 3）要不就先Arrays.sort一下，但是问题还要记得sort之后的array的每个值对应的index。。
 */
 public class Solution {
