@@ -17,8 +17,48 @@ A solution set is:
 
 后来的想法是，从num[0]开始，在后面的数组中找two sum
 这道题比较烦的是有重复，怎么跳过。。。可能是我写code比较少，总是写的乱七八糟的，而且总是有点问题
-我如果用for循环怎么写啊，我现在都是只知道用while
+对于while怎么写比for循环清楚一点。其实想明白了也还好
 */
+
+//改过之后的code
+public class Solution {
+    public List<List<Integer>> threeSum(int[] num) {
+		List<List<Integer>> result = new ArrayList<List<Integer>>();
+		if(num == null || num.length == 0) return result;
+		
+		int len = num.length;
+		Arrays.sort(num);
+		List<Integer> oneSet = new ArrayList<Integer>(3);
+		
+		for(int i = 0; i < len - 2; i++) {
+			int target = 0 - num[i];
+			
+			int start = i+1, end = len-1;
+			while(start < end) {
+				int tmp = num[start] + num[end];
+				if(tmp == target) {
+					oneSet = new ArrayList<Integer>(3);
+					oneSet.add(num[i]);oneSet.add(num[start]);oneSet.add(num[end]);
+					result.add(oneSet);
+					start ++;
+					end --;
+					while(start < end && num[start] == num[start-1]) start ++;	
+					while(start< end && num[end] == num[end + 1]) end --;	
+				}
+				else if(tmp < target) {
+					start ++;					
+				}
+				else {
+					end --;						
+				}
+			}			
+			while(i < len-1 && num[i] == num[i+1]) {
+				i++;
+			}
+		}
+		return result;
+    }
+}
 
 //code写的乱七八糟的，要refactor一下
 public class Solution {
@@ -46,7 +86,8 @@ public class Solution {
 				}
 				else if(tmp < target) {
 					start ++;
-					while(start > 0 && start < len && num[start] == num[start-1]) start ++;					
+					while(start > 0 && start < len && num[start] == num[start-1]) start ++;	
+					//only start<end is enough, and this is not quite necessary, handling this in if(tmp==target) is enough			
 				}
 				else {
 					end --;
