@@ -20,6 +20,14 @@ A solution set is:
 对于while怎么写比for循环清楚一点。其实想明白了也还好
 */
 
+/*
+时间复杂度，唉，自己好脑残
+首先想想哈，固定第一位之后的two sum其实只遍历了数组一次，就是n这个数量级对吧（开始为啥觉得是n^2啊。。。其实每次就移一个指针而已，开始想的是n-1+n-2+n-3+...+1，这不太对吧，这是brute force的节奏啊。。。）
+然后前面那个i的循环也是n的数量级，这样就是n^2
+之前数组sort是nlogn
+所以总体来讲是O(nlogn + n^2) -> O(n^2)    啊啊啊啊啊啊啊，我为啥觉得是乘法。。。又不是循环。。。还是躲去小角落好了。。。
+*/
+
 //改过之后的code
 public class Solution {
     public List<List<Integer>> threeSum(int[] num) {
