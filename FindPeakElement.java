@@ -15,6 +15,13 @@ Note:
 Your solution should be in logarithmic complexity.
 */
 
+/*
+开始只能想出遍历的方法，也就是O(n)。但是提示是O(logn)，应该就是要二分的那种
+其实这道题有很多peak嘛，只要返回一个就可以。那如果mid满足条件，OK，返回mid
+如果mid小于左边的元素，那在[start,mid-1]之间肯定有一个peak，同理，如果mid小于右边的元素，就在[mid+1,end]之间找
+比如[x,x,2,3,4,x,x]，3现在小于4，只能在4后面找，如果4后面的小于4，OK，4是peak。
+如果4后面的是5，那5后面是6的话，6是peak，如果5后面是3，5是peak。所以要么后面是递增的，最后一位是peak，要么有一位小，中间那个就是peak
+*/
 public class Solution {
     public int findPeakElement(int[] num) {
         if(num == null || num.length == 0) return -1;
@@ -37,3 +44,28 @@ public class Solution {
     	return mid;
     }
 }
+
+/*
+原来写的特别复杂。。。后来refactor了一下成了上面的情况
+    	if(mid-1 >= start && mid + 1 <= end) {
+    		if(num[mid] > num[mid-1] && num[mid] > num[mid+1]) return mid;
+    		else if(num[mid] < num[mid-1]) return helper(num, start, mid-1);
+    		else if(num[mid] < num[mid+1]) return helper(num, mid+1, end);
+    	}
+    	else if(mid - 1 < start) {
+    		if(mid + 1 <= end) {
+    			if(num[mid] > num[mid+1]) return mid;
+    			else return helper(num, mid + 1, end);
+    		} else {
+    			return mid;
+    		}
+    	} else {
+    		if(mid -1 >= start) {
+    			if(num[mid] > num[mid-1]) return mid;
+    			else return helper(num, start, mid-1);
+    		} else {
+    			return mid;
+    		}
+    	}
+    	return -1;
+*/
