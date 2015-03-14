@@ -24,15 +24,15 @@ public class Solution {
     }
     
     public List<Integer> helper(List<Integer> prelist) {	
-		int len = prelist.size();
-		List<Integer> result = new ArrayList<Integer>(len + 1);
-		result.add(0, 1);
-		for(int i = 0; i < len-1; i++) {
-			int sum = 1;
-			sum = prelist.get(i) + prelist.get(i+1);
-			result.add(i+1,sum);
-		}
-		result.add(len, 1);
-		return result;
+	int len = prelist.size();
+	List<Integer> result = new ArrayList<Integer>(len + 1);
+	result.add(0, 1);
+	for(int i = 0; i < len-1; i++) {
+		int sum = 1;
+		sum = prelist.get(i) + prelist.get(i+1);
+		result.add(i+1,sum);
 	}
+	result.add(len, 1);
+	return result;
+    }
 }
