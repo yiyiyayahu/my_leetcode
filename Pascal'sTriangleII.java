@@ -9,7 +9,7 @@ Could you optimize your algorithm to use only O(k) extra space?
 */
 
 /*
-和I差不多。。。但是我不确定我的时间复杂度OK么。。。。
+和I差不多。。。但是我不确定我的空间复杂度OK么。。。。
 */
 
 public class Solution {
