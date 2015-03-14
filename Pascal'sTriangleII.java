@@ -10,6 +10,7 @@ Could you optimize your algorithm to use only O(k) extra space?
 
 /*
 和I差不多。。。但是我不确定我的空间复杂度OK么。。。。
+应该可以这个array in-place的滚动向前得到，再想想
 */
 
 public class Solution {
