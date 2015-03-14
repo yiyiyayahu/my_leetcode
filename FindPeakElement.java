@@ -46,7 +46,13 @@ public class Solution {
 }
 
 /*
-原来写的特别复杂。。。后来refactor了一下成了上面的情况
+原来写的特别复杂。。。后来refactor了一下成了上面的情况。
+其实仔细想想，如果不在(mid - 1 >= start && num[mid] < num[mid-1])的情况下，start到mid-1的区间根本用不上，右边同理
+那是不是所有其他情况都可以返回mid呢，我觉得是的
+比如如果mid - 1 >= start，然后num[mid] > num[mid-1]那这种情况要么调用右边，要么返回mid
+如果mid - 1 < start, 也是要么调用右边，要么返回mid
+所以调用左边和调用右边的情况都考虑清楚以后，所有的都应该返回mid了
+
     	if(mid-1 >= start && mid + 1 <= end) {
     		if(num[mid] > num[mid-1] && num[mid] > num[mid+1]) return mid;
     		else if(num[mid] < num[mid-1]) return helper(num, start, mid-1);
