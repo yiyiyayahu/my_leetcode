@@ -56,5 +56,5 @@ public class Solution {
     	}
     	root.left = null;
     }
-    最开始是这样写的，怎么都不对
+    最开始是这样写的，怎么都不对，我觉得是上面node直接挪到node.right，所以就直接是null了，和之前的node连接就没有了
 */
