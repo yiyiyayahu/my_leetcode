@@ -8,6 +8,25 @@
  * }
  */
  
+public class Solution {
+    public void flatten(TreeNode root) {
+	if(root == null) return;
+	Stack<TreeNode> s = new Stack<TreeNode>();
+	s.push(root);
+	TreeNode node = root;
+
+	while(!s.isEmpty()) {
+		TreeNode tmp = s.pop();
+		if(tmp != root) {
+			node.right = new TreeNode(tmp.val);
+			node = node.right;
+		}			
+		if(tmp.right != null) s.push(tmp.right);
+		if(tmp.left != null) s.push(tmp.left);
+	}
+	root.left = null;
+    }
+}
 /*
 这相当于遍历了两遍，应该可以inplace改的，再想想
 我觉得要注意的是，如果我开始node = root, 然后马上node.left=null，那就相当于把root直接改掉了，后面的preorder traversal的结果也是错的
