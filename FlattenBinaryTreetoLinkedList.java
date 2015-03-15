@@ -10,6 +10,7 @@
  
 /*
 这相当于遍历了两遍，应该可以inplace改的，再想想
+我觉得要注意的是，如果我开始node = root, 然后马上node.left=null，那就相当于把root直接改掉了，后面的preorder traversal的结果也是错的
 */
 public class Solution {
     public void flatten(TreeNode root) {
