@@ -39,11 +39,11 @@ public class Solution {
 
 /*错误版本*/
 /*这个版本的问题是从后面往前面算，但是往往我的第n位已经更新过了，这样再算第n-1位的结果就是错的。。。不晓得怎么改
-原来想法是如果rowIndex=3：
-|               1 |
+原来想法是如果rowIndex=3：结果变成了
+|               1 | 
 |            1，1 |
-|         1，2，1 |
-|      1，3，3，1 |
+|         1，2，1 |        ->   2，2，1
+|      1，3，3，1 |        ->5，5，3，1 
 */
 	public static List<Integer> getRow(int rowIndex) {
 		if(rowIndex < 0) return null;
