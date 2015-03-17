@@ -10,6 +10,11 @@ Could you optimize your algorithm to use only O(k) extra space?
 
 /*
 赶脚好难想。最开始想错了，后来这个也是参考人家的才做粗来的。
+| 1               |     1
+| 1, 1            |     1，1
+| 1，2，1         |     1，1，1     ——   1，2，1
+| 1，3，3，1      |     1，2，1，1  ——   1，3，3，1
+其实这里是每次都给最后一位补了个1，然后再从后往前算
 */
 public class Solution {
     public List<Integer> getRow(int rowIndex) {
