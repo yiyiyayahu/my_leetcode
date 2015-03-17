@@ -15,6 +15,7 @@ Could you optimize your algorithm to use only O(k) extra space?
 | 1，2，1         |     1，1，1     ——   1，2，1
 | 1，3，3，1      |     1，2，1，1  ——   1，3，3，1
 其实这里是每次都给最后一位补了个1，然后再从后往前算
+因为是金字塔形，所以为了保持一致，每次添个1？
 */
 public class Solution {
     public List<Integer> getRow(int rowIndex) {
