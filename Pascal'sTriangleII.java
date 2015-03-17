@@ -66,6 +66,31 @@ public class Solution {
 		return list;
 	}
 	
+/*错误代码改正，还是每次用1补位，只是顺序不同而已，其他得和第一个就一样了
+我觉得我做错的原因还是没有想好这个pascal's triangle怎么算出来的*/	
+        public static List<Integer> getRow(int rowIndex) {
+		if(rowIndex < 0) return null;
+		
+		List<Integer> list = new ArrayList<Integer>(rowIndex + 1);
+		
+		for(int i = 0; i < rowIndex+1; i++) {
+			list.add(i, 0);
+		}
+		list.set(rowIndex, 1);
+		
+		for(int i = 0; i < rowIndex; i++) {
+			
+			int tmp = 0;
+			for(int j = rowIndex-1-i; j <= rowIndex-1; j++) {
+				if(j == rowIndex-1-i) list.set(rowIndex-1-i,1);
+				else {
+					tmp = list.get(j) + list.get(j+1);
+					list.set(j, tmp);
+				}
+			}			
+		}
+		return list;
+	}
 /*
 和I差不多。。。但是我的空间复杂度不好啊，比如rowIndex=k，那用掉的空间其实是1+2+3+...+k应该是O(k^2)
 应该可以这个array in-place的滚动向前得到，再想想
