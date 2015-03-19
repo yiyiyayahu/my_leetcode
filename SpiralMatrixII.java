@@ -11,7 +11,7 @@ You should return the following matrix:
  [ 7, 6, 5 ]
 ]
 */
-
+//这道题可能因为是n*n的，所以就不存在I里面那些问题，就很好写
 public class Solution {
     public int[][] generateMatrix(int n) {
         int[][] matrix = new int[n][n];
