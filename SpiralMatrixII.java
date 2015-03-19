@@ -12,6 +12,7 @@ You should return the following matrix:
 ]
 */
 //这道题可能因为是n*n的，所以就不存在I里面那些问题，就很好写
+
 public class Solution {
     public int[][] generateMatrix(int n) {
         int[][] matrix = new int[n][n];
@@ -24,22 +25,14 @@ public class Solution {
         		matrix[i][j] = elem ++;
         		break;
         	}
-        	while(j < end) {
-        		matrix[i][j] = elem ++;
-        		j ++;
-        	}
-        	while(i < end) {
-        		matrix[i][j] = elem ++;
-        		i ++;
-        	}
-        	while(j > start) {
-        		matrix[i][j] = elem ++;
-        		j --;
-        	}
-        	while(i > start) {
-        		matrix[i][j] = elem ++;
-        		i --;
-        	}
+        	while(j < end) matrix[i][j++] = elem ++;
+        	
+        	while(i < end) matrix[i++][j] = elem ++;
+        	
+        	while(j > start) matrix[i][j--] = elem ++;
+        	
+        	while(i > start) matrix[i--][j] = elem ++;
+        	
             i ++; j ++;
             start ++; end --;
         }
