@@ -36,7 +36,6 @@ public class Solution {
          i ++; j ++;
          start ++; end --;
         }
-        
         return matrix;
     }
 }
