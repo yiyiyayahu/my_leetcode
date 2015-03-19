@@ -33,8 +33,8 @@ public class Solution {
         	
         	while(i > start) matrix[i--][j] = elem ++;
         	
-            i ++; j ++;
-            start ++; end --;
+         i ++; j ++;
+         start ++; end --;
         }
         
         return matrix;
