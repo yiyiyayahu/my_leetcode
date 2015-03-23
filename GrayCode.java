@@ -18,6 +18,10 @@ For now, the judge is able to judge based on one instance of gray code sequence.
 */
 
  /*
+ 开始没什么思路，后来发现，诶，很简单
+ n=2, 00 -> 01 -> 11 -> 10
+ n=3, 000 -> 001 -> 011 -> 010
+      100 <- 101 <- 111 <- 110
  */
 public class Solution {
     public List<Integer> grayCode(int n) {
