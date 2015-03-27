@@ -23,7 +23,40 @@ Note: Recursive solution is trivial, could you do it iteratively?
  *     TreeNode(int x) { val = x; }
  * }
  */
- 
+
+//改进方法：用一个pre来记录之前遍历过的node
+//判断条件要注意，我之前忽略了可能右子树为空的情况（curr.right == null && curr.left == pre）
+public class Solution {
+
+    public List<Integer> postorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<Integer>();
+
+        if(root == null) return list;
+        
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        stack.push(root);
+        TreeNode pre = null;
+        while(!stack.isEmpty()) {
+            TreeNode curr = stack.peek();
+            
+            if(curr.left == null && curr.right == null) {
+                list.add(curr.val);
+                stack.pop();
+            }             
+            else if(curr.right != null && curr.right == pre || curr.right == null && curr.left == pre) {
+                list.add(curr.val);
+                stack.pop();
+            } else {           
+            	if(curr.right != null) stack.push(curr.right);
+            	if(curr.left != null) stack.push(curr.left);
+            }  
+
+            pre = curr;
+
+        }
+        return list;
+    }
+}
 /**
 用一个stack，先放右节点，再放左节点，如果左右都为空，就直接add到list里
 我现在是用一个ArrayList来存之前左右子树都遍历过的节点，如果遇到了，就直接输出。但是不晓得这样做好不好，实在没想出其他好方法
