@@ -27,6 +27,7 @@ Note: Recursive solution is trivial, could you do it iteratively?
 /**
 用一个stack，先放右节点，再放左节点，如果左右都为空，就直接add到list里
 我现在是用一个ArrayList来存之前左右子树都遍历过的节点，如果遇到了，就直接输出。但是不晓得这样做好不好，实在没想出其他好方法
+时间复杂度O(n)，只遍历一次，空间复杂度O(n)
 */
 public class Solution {
 
