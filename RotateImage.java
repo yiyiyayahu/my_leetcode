@@ -7,6 +7,11 @@ Follow up:
 Could you do this in-place?
 */
 
+/*
+这道题之前看cc的时候就有点懵，这次总算是自己做出来的
+但是我开始还是错了，没有考虑到如果n是奇数，那其实在最中间那一列，也就是j=n/2这一列是不变的，因为我没有挪动过
+改过之后就多加了一步判断，如果是奇数，那j是可以等于n/2的
+*/
 public class Solution {
     public void rotate(int[][] matrix) {
         int n = matrix.length;
