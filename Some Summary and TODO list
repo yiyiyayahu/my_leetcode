@@ -10,6 +10,11 @@ NQueens大概是n个位置，往里面填valid的数，然后recursive
 7) Word Break I, II
 8) Sudoku Solver                    --done
 
+==================常出现的错误===============
+NullPointerException
+ArrayIndexOutOfBoundException
+不管是调用n.next,n.left,n.right还是A[i]啊之类的，一定要先想想，这个东西有没有，要不要加判断！！！
+=============================================
 
 March, 2nd  周一 4道题
 March, 3rd  周二 3道题+锻炼一小时
@@ -43,4 +48,4 @@ March, 18th 周三 2道题（spiral matrix I和II）
 March, 26th 周四 3道题 （postorder traversal，reverse bits，read4）
 March, 27th 周五 0道题 （read4好难理解）
 March, 28th 周六 3道题（rotate image，read4 ii, populating tree next node ii）
-March, 29th 周日 2道题 （sum root to leaf numbers, length of last word）
+March, 29th 周日 3道题 （sum root to leaf numbers, length of last word, search for a range）
