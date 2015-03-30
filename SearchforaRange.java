@@ -10,6 +10,8 @@ Given [5, 7, 7, 8, 8, 10] and target value 8,
 return [3, 4].
 */
 
+//while(i >= start && A[i] == target) i--; 这里要注意先判断i是不是在index范围里，再判断A[i]== target，不然就indexOutOfBoundException了
+
 public class Solution {
     public int[] searchRange(int[] A, int target) {
         if(A == null || A.length == 0) {
