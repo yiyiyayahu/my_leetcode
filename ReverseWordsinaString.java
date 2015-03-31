@@ -19,6 +19,17 @@ How about multiple spaces between two words?
 Reduce them to a single space in the reversed string.
 */
 
+
+/*
+应该想考察的不是这样的，可是trim和split明明很方便嘛。。。
+
+官方给出的解法是：
+One simple approach is a two-pass solution: 
+First pass to split the string by spaces into an array of words, then second pass to extract the words in reversed order.
+
+We can do better in one-pass. While iterating the string in reverse order, we keep track of a word’s begin and end position. 
+When we are at the beginning of a word, we append it.
+*/
 public class Solution {
 
     public String reverseWords(String s) {
@@ -31,7 +42,7 @@ public class Solution {
         
         for(int i = arr.length - 1; i >= 0; i--) {
             result.append(arr[i]);
-            if(i!=0) result.append(" ");
+            if(i!=0) result.append(" ");  //注意不要在末尾再填个space进去
         }
         return result.toString();
     }
