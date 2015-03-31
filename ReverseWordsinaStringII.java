@@ -19,7 +19,6 @@ code写的特别乱，而且没有想好怎么才能in place的换
 public class Solution {
     public void reverseWords(char[] s) {
         if(s == null || s.length == 0) return;
-        boolean isOneWord = true;
         int len = s.length;
         char[] tmp = new char[len];
         
@@ -27,7 +26,6 @@ public class Solution {
         int start = 0;
         for(int i = 0; i < len-1; i++) {
             if(s[i] == ' ') {
-            	isOneWord = false;
             	tmp[j-(i-start)] = ' ';
                 for(int k = start; k < i; k++) {
                     tmp[j - (i-k-1)] = s[k];
@@ -40,10 +38,9 @@ public class Solution {
         while(start < len) {
         	tmp[j-(len-1-start)] = s[start++];
         }
-        if(!isOneWord) {	        
-	        for(int i = 0; i < len; i++) {
-	            s[i] = tmp[i];
-	        }
+        	        
+        for(int i = 0; i < len; i++) {
+            s[i] = tmp[i];
         }
     }
 }
