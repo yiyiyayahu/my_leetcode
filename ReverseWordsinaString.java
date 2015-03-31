@@ -22,6 +22,7 @@ Reduce them to a single space in the reversed string.
 
 /*
 应该想考察的不是这样的，可是trim和split明明很方便嘛。。。
+喔喔，我要是这样做的话就是two pass了，恩恩，一会儿改成one pass的
 
 官方给出的解法是：
 One simple approach is a two-pass solution: 
