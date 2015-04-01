@@ -20,6 +20,7 @@ All words contain only lowercase alphabetic characters.
 
 /*
 最开始的写法是这样的，但是会Time Limit Exceeded
+我觉得是因为我这样做其实算是DFS，因为对于queue里面的每一个string，我都要去找一个长度，返回。这样当dict特别大，queue特别大的时候，就特别慢
 */
 public class Solution {
     public int ladderLength(String start, String end, Set<String> dict) {
