@@ -19,6 +19,70 @@ All words contain only lowercase alphabetic characters.
 */
 
 /*
+在毛老师的帮助下，发现不能直接遍历dict，因为dict可能太长，就会time limit exceeded
+*/
+
+public class Solution {
+    public int ladderLength(String start, String end, Set<String> dict) {
+        if(start == null) return 0;
+        if(start.length() != end.length()) return 0;
+        
+        Queue<String> queue = new LinkedList<String>();
+        Queue<String> tmp = new LinkedList<String>();
+        queue.add(start);
+        int result = 2;
+        if(isOneLetterDiff(start, end)) return result;
+        while(true) {
+            while(!queue.isEmpty()) {
+                String s1 = queue.remove();
+                
+                if(!dict.isEmpty()) {
+                    Set<String> set = oneLetterDiffSet(s1);
+                    for(String s2 : set) {	
+                        if(dict.contains(s2)) {
+                            tmp.add(s2);
+                            dict.remove(s2);
+                            if(isOneLetterDiff(s2, end)) return result + 1;
+                        }
+                    }
+                }
+            }
+            if(tmp.isEmpty()) return 0;
+            queue = tmp;
+            tmp = new LinkedList<String>();
+            result ++;
+        }
+    }
+    
+    public boolean isOneLetterDiff(String s1, String s2) {
+        if(s1.length() != s2.length()) return false;
+        int diff = 0;
+        int slen = s1.length();
+        for(int i = 0; i < slen; i++) {
+            if(s1.charAt(i) != s2.charAt(i)) diff ++;
+        }
+        if(diff == 1) return true;
+        return false;
+    }
+    
+    public static Set<String> oneLetterDiffSet(String s) {
+        Set<String> stringSet = new HashSet<String>();
+        if(s == null || s.length() == 0) return stringSet;
+        
+        for(int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            char[] arr = s.toCharArray();
+            for(char ch = 'a'; ch <= 'z'; ch++) {
+            	if(ch == c) continue;
+            	arr[i] = ch;
+            	stringSet.add(String.valueOf(arr));
+            }
+        }
+        return stringSet;
+    }
+}
+
+/*
 最开始的写法是这样的，但是会Time Limit Exceeded
 我觉得是因为我这样做其实算是DFS，因为对于queue里面的每一个string，我都要去找一个长度，返回。这样当dict特别大，queue特别大的时候，就特别慢
 */
