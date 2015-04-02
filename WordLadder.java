@@ -55,7 +55,7 @@ public class Solution {
         }
     }
     
-    public static Set<String> oneLetterDiffSet(String s) {
+    public Set<String> oneLetterDiffSet(String s) {
         Set<String> stringSet = new HashSet<String>();
         if(s == null || s.length() == 0) return stringSet;
         
