@@ -20,6 +20,8 @@ All words contain only lowercase alphabetic characters.
 
 /*
 在毛老师的帮助下，发现不能直接遍历dict，因为dict可能太长，就会time limit exceeded
+因为其实相对来说word的长度不会很长，那即使把所有one letter diff的set找出来，复杂度也就是O(n)
+但是dict的长度就不一样了
 */
 
 public class Solution {
@@ -73,6 +75,7 @@ public class Solution {
 /*
 最开始的写法是这样的，但是会Time Limit Exceeded
 我觉得是因为我这样做其实算是DFS，因为对于queue里面的每一个string，我都要去找一个长度，返回。这样当dict特别大，queue特别大的时候，就特别慢
+而且后面返回result那里的code还是有点问题
 */
 public class Solution {
     public int ladderLength(String start, String end, Set<String> dict) {
