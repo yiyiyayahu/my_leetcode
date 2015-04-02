@@ -21,7 +21,6 @@ All words contain only lowercase alphabetic characters.
 /*
 在毛老师的帮助下，发现不能直接遍历dict，因为dict可能太长，就会time limit exceeded
 因为其实相对来说word的长度不会很长，那即使把所有one letter diff的set找出来，复杂度也就是O(n)
-但是dict的长度就不一样了
 */
 
 public class Solution {
