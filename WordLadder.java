@@ -31,7 +31,6 @@ public class Solution {
         Queue<String> tmp = new LinkedList<String>();
         queue.add(start);
         int result = 2;
-        if(isOneLetterDiff(start, end)) return result;
         while(true) {
             while(!queue.isEmpty()) {
                 String s1 = queue.remove();
@@ -39,10 +38,10 @@ public class Solution {
                 if(!dict.isEmpty()) {
                     Set<String> set = oneLetterDiffSet(s1);
                     for(String s2 : set) {	
+                        if(s2.equals(end)) return result;
                         if(dict.contains(s2)) {
                             tmp.add(s2);
                             dict.remove(s2);
-                            if(isOneLetterDiff(s2, end)) return result + 1;
                         }
                     }
                 }
@@ -52,17 +51,6 @@ public class Solution {
             tmp = new LinkedList<String>();
             result ++;
         }
-    }
-    
-    public boolean isOneLetterDiff(String s1, String s2) {
-        if(s1.length() != s2.length()) return false;
-        int diff = 0;
-        int slen = s1.length();
-        for(int i = 0; i < slen; i++) {
-            if(s1.charAt(i) != s2.charAt(i)) diff ++;
-        }
-        if(diff == 1) return true;
-        return false;
     }
     
     public static Set<String> oneLetterDiffSet(String s) {
