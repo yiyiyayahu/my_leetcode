@@ -8,8 +8,45 @@ The longest consecutive elements sequence is [1, 2, 3, 4]. Return its length: 4.
 Your algorithm should run in O(n) complexity.
 */
 
-//这个解法还是会TLE
+/*改进后的*/
+public class Solution {
+    public int longestConsecutive(int[] num) {
+        int result = 0;
+    	HashSet<Integer> set = new HashSet<Integer>();
+    	for(int i = 0; i < num.length; i++) {
+    		set.add(num[i]);
+    	}
+    	
+    	for(int i = 0; i < num.length; i++) {
+    		int curr = num[i];
+    		if(!set.contains(curr)) continue;
+    		int increment = 1;
+    		int length = 1;
+    		
+    		boolean checkLarger = true;
+    		boolean checkSmaller = true;
+    		while(set.contains(curr + increment) || set.contains(curr - increment) ) {  
+    			if(!set.contains(curr + increment)) checkLarger = false;
+    			if(!set.contains(curr - increment)) checkSmaller = false;
+    			if(checkLarger) {
+    			    length ++;
+    			    set.remove(curr + increment);
+    			}
+    			if(checkSmaller) {
+    			    length ++;
+    			    set.remove(curr - increment);
+    			}
+    			increment ++;
+    		}
+    		
+    		if(length > result) result = length;
+    	}
+        return result;
+    }
+}
+
 /*
+这个解法还是会TLE
 跟杨老师打了个电话，感觉思路清晰好多
 1. 首先考虑这个解法为什么不好呢，worst case的时间复杂度是什么呢
 worst case就是这个array是降序排列的，那复杂度就是O(n^2) 
