@@ -1,4 +1,25 @@
 /*
+改了一下，对p的next做了修改
+但是这道题必须要返回ListNode吗？可以用void么
+*/
+
+public ListNode reverseList(ListNode head) {
+    if(head == null || head.next == null) return head;
+    
+    ListNode p = head;
+    ListNode next = null;
+    ListNode newtail = null;
+    
+    while(p != null) {
+    	next = p.next;
+    	p.next = newtail;
+    	newtail = p;
+    	p = next;  		
+    }
+    return newtail;
+}
+
+/*
 这个完全是错的，会进入死循环
 开始是这样想的，1 -> 2 -> 3 -> 4 -> 5
                 p    q   next
