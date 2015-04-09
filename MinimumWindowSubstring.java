@@ -11,7 +11,12 @@ If there is no such window in S that covers all characters in T, return the emtp
 
 If there are multiple such windows, you are guaranteed that there will always be only one unique minimum window in S.
 */
-/*开始用HashSet，后来发现T中的字母可以是重复的*/
+
+
+/*开始用HashSet，后来发现T中的字母可以是重复的
+改用HashMap之后会出现TLE
+*/
+
 public class Solution {
     public String minWindow(String S, String T) {
         if(S == null || T == null || S.length() < T.length()) return "";
