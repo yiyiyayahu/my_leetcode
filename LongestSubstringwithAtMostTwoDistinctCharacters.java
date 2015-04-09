@@ -5,7 +5,9 @@ For example, Given s = “eceba”,
 
 T is "ece" which its length is 3.
 */
-
+/*
+确定这是一道Hard难度的题吗？还是我打开方式不对？时间复杂度不好？
+*/
 public class Solution {
     public int lengthOfLongestSubstringTwoDistinct(String s) {
         if(s == null || s.length() == 0) return 0;
