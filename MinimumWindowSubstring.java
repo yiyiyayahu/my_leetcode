@@ -14,7 +14,9 @@ If there are multiple such windows, you are guaranteed that there will always be
 
 
 /*开始用HashSet，后来发现T中的字母可以是重复的
-改用HashMap之后会出现TLE
+改用HashMap之后会出现TLE，那肯定就是时间复杂度不好，很有可能是O(n^2)。还是之前的那个思路
+1. worst case呢就是S="aaaabc" T="abc" 对于第一个a我找了一遍n，第二个a我也找了一遍n-1。。。所以其实是O(n^2)
+2. 做的重复工作呢就是反复找。
 */
 
 public class Solution {
