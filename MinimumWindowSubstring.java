@@ -17,7 +17,7 @@ If there are multiple such windows, you are guaranteed that there will always be
 改用HashMap之后会出现TLE，那肯定就是时间复杂度不好，很有可能是O(n^2)。还是之前的那个思路
 1. worst case呢就是S="aaaabc" T="abc" 对于第一个a我找了一遍n，第二个a我也找了一遍n-1。。。所以其实是O(n^2)
 2. 做的重复工作如何避免呢？唉，有点想不出。如果T是aabc，那其实我前两个a可以跳过不找？
-3. 用双指针？双指针其实就是来解决这个问题的。就是比如对于第一个a我得出的是aaaabc，然后我看看能不能缩小范围来满足都在T里地条件
+3. 用双指针？双指针其实就是来解决这个问题的。就是比如对于第一个a我得出的是aaaabc，然后我看看能不能缩小范围来满足都在T里的条件
 那我得到aabc，之后再从最后一个a开始search，这时候剩余长度比T小应该就可以直接停止search了
 */
 
