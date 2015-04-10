@@ -21,6 +21,65 @@ If there are multiple such windows, you are guaranteed that there will always be
 那我得到aabc，之后再从最后一个a开始search，这时候剩余长度比T小应该就可以直接停止search了
 */
 
+/*
+因为是string可以看成char array，然后char 又可以对应int[256]，所以不用hashmap这么麻烦
+双指针，两个条件退后start
+1） S[start]不在T里
+2）退后start之后的start-j之间的str还包括T中所有character
+*/
+public class Solution {
+    public String minWindow(String S, String T) {
+        if(S == null || T == null || S.length() < T.length()) return "";
+        StringBuilder result = new StringBuilder();
+        int slen = S.length(), tlen = T.length();
+        
+        int[] strT = new int[256];
+        int[] foundT = new int[256];
+        
+        int start = 0, end = 0;
+        
+        for(int i = 0; i < tlen; i++) {
+        	strT[T.charAt(i)] ++;
+        }
+        while(start <= slen - tlen) {
+        	StringBuilder tmpSB = new StringBuilder();
+        	int foundNum = 0;
+        	for(int j = start; j < slen; j++) {       		
+        		char c = S.charAt(j);
+        		if(strT[c] > 0) {
+        			foundT[c] ++; 
+        			if(foundT[c] <= strT[c]) foundNum ++; 
+        		}
+        		if(foundNum == tlen) {
+        			end = j;
+        			break;
+        		}
+        	}
+			while(start <= end) {
+				char c = S.charAt(start);
+				if(strT[c] == 0) start ++;
+				else if(foundT[c] > strT[c]) {
+					start ++;
+					foundT[c] --;
+				} else {
+					break;
+				}
+			}
+			if(foundNum == tlen) {
+				for(int i = start; i <= end; i++) {
+					tmpSB.append(S.charAt(i));
+				}
+			}
+        	if(result.length() == 0 || tmpSB.length() < result.length() ) {
+            	if(tmpSB.length() > 0) result = tmpSB;
+        	} 
+        	start ++;
+        	foundT = new int[256];
+        }
+        return result.toString();
+    }
+}
+
 public class Solution {
     public String minWindow(String S, String T) {
         if(S == null || T == null || S.length() < T.length()) return "";
