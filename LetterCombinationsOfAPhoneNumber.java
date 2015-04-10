@@ -8,6 +8,14 @@ Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
 Note:
 Although the above answer is in lexicographical order, your answer could be in any order you want.
 */
+/*
+开始List<String> getListByNum(char c)函数我是用switch case写的，特别不简洁
+注意两点：
+1. char to int 
+    1）用API： int num = Character.getNumericValue(c);
+    2）ASCII： int num = c - 48;
+2. char to String:  String.valueOf(c)
+*/
 
 public class Solution {
     public List<String> letterCombinations(String digits) {
@@ -41,7 +49,7 @@ public class Solution {
     }
     public List<String> getListByNum(char c) {
         String[] lists = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
-    	int num = Character.getNumericValue(c);
+    	int num = c - 48;
     	String s = lists[num];
     	List<String> list = new ArrayList<String>();
     	if(s.equals("")) return list;
