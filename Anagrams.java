@@ -9,7 +9,8 @@ Note: All inputs will be in lower-case
 然后下面的这个解法用到HashMap，可能空间复杂度就不怎么好，把string sort之后的当成key，value是对应的index的list
 当这个key对应的value的size大于1的时候加到list里面
 
-看到网上有人用hash值来弄，可以试试。
+看到网上有人用hash值来弄，可以试试。应该就是自己写一个对于string的hash function
+相当于自己新建一个arr来存这些hash值，然后对于相同hash的就输出
 */
 public class Solution {
     public List<String> anagrams(String[] strs) {
