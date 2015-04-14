@@ -18,7 +18,15 @@ c) Replace a character
        2) 如果是insert，那就是已知hello到hall，那么只要在最后一位insert一个e就可以了 -> a[i][j-1] + 1
        3) 如果是delete，那就是已知hell到halle，只要把最后的o delete掉 -> a[i-1][j] + 1
        综上，就是a[i][j] = Math.min(a[i-1][j-1] + 1, a[i][j-1] + 1, a[i-1][j] + 1); (if c1 != c2)
-    4. dp的初始条件 （这个我开始就写错了，再仔细想想）
+    4. dp的初始条件 （这个我开始就写错了）
+       考虑到i-1 < 0, j-1 < 0的情况有点像是转化为空的string：
+            e -> "" ea -> "" eat -> ""  s -> "" se -> "" sea -> ""
+       其实想想哈，eat -> sea，到a[0][1]的时候，也就是e->se的时候，因为e和e相等，那要找的是a[i-1][j-1] 其实像是""到s的距离
+          s  e  a             0 1 2 3
+       e  1  1  2             1 1 1 2
+       a      ...                    
+       t      ...
+       所以最后用的数组其实是(len1+1) * (len2+1)的
 */
 
 public class Solution {
