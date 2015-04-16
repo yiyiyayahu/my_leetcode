@@ -19,6 +19,15 @@ return [1,3,2].
  *     TreeNode(int x) { val = x; }
  * }
  */
+ 
+/* 
+ First, we need to figure out who is the succeed node to be visited. Given the root of a tree,
+   If it has left child, visit the left-most leaf of the root;
+   If it has no left child, visit the root itself and then go to its right subtree;
+   repeat until all nodes have been visited.
+ To avoid recursion, we need a stack to keep track of the parent nodes along the way.
+*/
+
 public class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<Integer>();
