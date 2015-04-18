@@ -20,6 +20,15 @@ Given n = 3, your program should return all 5 unique BST's shown below.
  *     TreeNode(int x) { val = x; left = null; right = null; }
  * }
  */
+ 
+ /*
+ 开始想太多，其实就是和1一样的，确定一个root，左边的构造left，右边的构造right就好了
+ 这个没法儿dp啊。只是recursive的调用就好了嘛
+ 
+ 然后开始一直卡在一个地方，纠结如果leftList.size()==0或者rightList.size()==0咋办
+ 后来发现n=0的case一直过不了，显示应该返回[{}]，我返回的是[]
+ 原来left>right的时候也放一个null到list里面，这样就不存在leftList或者rightList的size是0的情况了
+ */
 public class Solution {
     public List<TreeNode> generateTrees(int n) {
         return helper(1, n);
