@@ -17,6 +17,11 @@ Special thanks to @mithmatt for adding this problem and creating all test cases.
  *     ListNode(int x) { val = x; }
  * }
  */
+ 
+/*
+开始的问题是，我虽然用了个tmp，但是我直接return head，那head被remove的情况就不对了
+所以又用了个res=tmp，返回res.next
+*/
 public class Solution {
     public ListNode removeElements(ListNode head, int val) {
         if(head == null) return head;
