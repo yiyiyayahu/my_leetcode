@@ -2,8 +2,11 @@
 Only added some lines of code from I:
 1) sort the array first
 2) if the digit is seen before: 加到重复元素的后面
-这个code应该是没啥问题，但是会TLE
-想一下时间复杂度吧
+但是这个code是有问题的，如果[0,0,1]那没有问题，但是如果[0,0,1,1]的话，情况就是：
+[0,0,1] -> [[1,0,0], [0,1,0], [0,0,1]]
+对于[1,0,0] -> [1,1,0,0], [1,0,1,0], [1,0,0,1]
+对于[0,1,0] -> [1,0,1,0], [0,1,1,0], [0,1,0,1]
+这样就出现重复了。。。如何避免呢
 */
    
     public List<List<Integer>> permuteUnique(int[] num) {
