@@ -6,6 +6,40 @@ For example,
 [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1]. 
 */
 
+/*
+网上的recursive做法：类似NQueens的解题思路
+*/
+public class Solution {
+    public List<List<Integer>> permute(int[] num) {
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+    	if(num == null || num.length == 0) return result;
+    	List<Integer> list = new ArrayList<Integer>();
+    	boolean[] visited = new boolean[num.length];
+    	helper(num, list, result, visited);
+		return result;
+    }
+    
+    public static void helper(int[] num, List<Integer> list, List<List<Integer>> result, boolean[] visited) {
+    	if(list.size() == num.length) {
+    		result.add(new ArrayList<Integer>(list));
+    		return;
+    	}
+    	
+    	for(int i = 0; i < num.length; i++) {
+    		if(!visited[i]) {
+    			visited[i] = true;
+	    		list.add(num[i]);
+	    		helper(num, list, result, visited);
+	    		list.remove(list.size() - 1);
+	    		visited[i] = false;
+    		}
+    	}
+    }
+}
+
+/*
+iterative
+*/
 public class Solution {
     public List<List<Integer>> permute(int[] num) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
