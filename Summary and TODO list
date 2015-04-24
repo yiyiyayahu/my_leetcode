@@ -6,7 +6,7 @@ NQueens大概是n个位置，往里面填valid的数，然后recursive
 3) Permutation Sequence             --done
 4) Permutations I, II
 5) Next Permutation
-6) Palindrome Partitioning I, II
+6) Palindrome Partitioning I, II    --done
 7) Word Break I, II
 8) Sudoku Solver                    --done
 
