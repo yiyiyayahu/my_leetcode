@@ -7,6 +7,10 @@ Only added some lines of code from I:
 对于[1,0,0] -> [1,1,0,0], [1,0,1,0], [1,0,0,1]
 对于[0,1,0] -> [1,0,1,0], [0,1,1,0], [0,1,0,1]
 这样就出现重复了。。。如何避免呢
+
+找到一篇比较好的blog
+http://blog.csdn.net/linhuanmars/article/details/21569031
+
 */
    
     public List<List<Integer>> permuteUnique(int[] num) {
