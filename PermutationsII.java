@@ -21,7 +21,7 @@ public class Solution {
     	
     	Arrays.sort(num);
     	helper(num, list, result, visited);
-		return result;
+	return result;
     }
     
     public static void helper(int[] num, List<Integer> list, List<List<Integer>> result, boolean[] visited) {
