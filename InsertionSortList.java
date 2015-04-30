@@ -10,6 +10,12 @@
  *     ListNode(int x) { val = x; }
  * }
  */
+ 
+ /*
+ 开始木有考虑有重复数字的情况，而且木有加if(tmp.val >= val) 这个条件，就导致了有可能3-2-4 -> 2-4-3
+ 就是2-3-4其实已经sort好了，但是我还是把4和3调换了一下
+ 我觉得我的code写的不简洁，要改进！！！明天改吧
+ */
 public class Solution {
     public ListNode insertionSortList(ListNode head) {
         if(head == null || head.next == null) return head;
