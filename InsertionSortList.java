@@ -15,7 +15,11 @@
  唉，不对，我那个时候对于val移明显不对嘛，这个考察的恰恰是linkedlist的操作啊
  但是唉，这个我做了半天还是错的，我咋这么笨捏
  首先要用个dummy head，其次再移
- 我明天接着想想好了
+ 额，这个解法其实是重新建一个linkedlist诶，也不是inplace的额
+ 
+ 我开始想的是这个dummy head： helper，要加一个helper.next = head;
+ 其实也不是不可以，但是总是有问题
+ 我发现我linkedlist特别的不熟悉诶，多想想
  */
  public class Solution {
     public ListNode insertionSortList(ListNode head) {
