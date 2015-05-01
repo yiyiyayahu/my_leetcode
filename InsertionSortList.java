@@ -12,6 +12,34 @@
  */
  
  /*
+ 唉，不对，我那个时候对于val移明显不对嘛，这个考察的恰恰是linkedlist的操作啊
+ 但是唉，这个我做了半天还是错的，我咋这么笨捏
+ 首先要用个dummy head，其次再移
+ 我明天接着想想好了
+ */
+ public class Solution {
+    public ListNode insertionSortList(ListNode head) {
+        if(head == null || head.next == null) return head;
+        
+        ListNode n = head;
+        ListNode helper = new ListNode(0);
+        
+        while(n != null) {
+        	ListNode next = n.next;
+            ListNode tmp = helper;
+            while(tmp.next != null && tmp.next.val <= n.val) {
+                tmp = tmp.next;
+            }
+            
+            n.next = tmp.next;
+            tmp.next = n;
+            n = next;
+        }
+        
+        return helper.next;
+    }
+}
+ /*
  开始木有考虑有重复数字的情况，而且木有加if(tmp.val >= val) 这个条件，就导致了有可能3-2-4 -> 2-4-3
  就是2-3-4其实已经sort好了，但是我还是把4和3调换了一下
  我觉得我的code写的不简洁，要改进！！！明天改吧
