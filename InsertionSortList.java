@@ -43,6 +43,41 @@
         return helper.next;
     }
 }
+
+/*
+我开始遇到的错误是
+比如0->5->1->4->2->3
+然后0指向1，1指向5，但是我的问题是5的next没有更新
+0->1->5->1->4->2->3
+这样就会一直一直循环
+后来我想着，诶，我把tmp.next.next=next，还是有问题
+比如到这步0->1->4->5->2->3，这个时候tmp在1这里，如果这样做，就直接把4的next设为3，那么最后的结果就没有5了
+所以还是要及时的把5后面设成null，就是第一步就变成0->1->5->null，然后因为n=next嘛，就是会看到4，然后找地方插入
+我下面写的代码就很乱，上面的code就handle的很好，要学习
+其实这个和reverse linked list时候我犯的错误是一样的，都是有一个尾指针没有更新，导致一直循环循环下去，特别不好
+*/
+
+    public ListNode insertionSortList(ListNode head) {
+        if(head == null || head.next == null) return head;
+        
+        ListNode n = head.next;
+        ListNode helper = new ListNode(0);
+        helper.next = head;
+        helper.next.next = null;
+        
+        while(n != null) {
+        	ListNode next = n.next;
+            ListNode tmp = helper;
+            while(tmp.next != n && tmp.next.val <= n.val) {
+                tmp = tmp.next;
+            }
+
+            n.next = tmp.next;           
+            tmp.next = n;	               
+            n = next;
+        }       
+        return helper.next;
+    }
  /*
  开始木有考虑有重复数字的情况，而且木有加if(tmp.val >= val) 这个条件，就导致了有可能3-2-4 -> 2-4-3
  就是2-3-4其实已经sort好了，但是我还是把4和3调换了一下
