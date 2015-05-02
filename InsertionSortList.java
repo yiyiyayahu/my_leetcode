@@ -29,7 +29,7 @@
         ListNode helper = new ListNode(0);
         
         while(n != null) {
-        	  ListNode next = n.next;
+            ListNode next = n.next;
             ListNode tmp = helper;
             while(tmp.next != null && tmp.next.val <= n.val) {
                 tmp = tmp.next;
@@ -66,7 +66,7 @@
         helper.next.next = null;
         
         while(n != null) {
-        	  ListNode next = n.next;
+            ListNode next = n.next;
             ListNode tmp = helper;
             while(tmp.next != n && tmp.next.val <= n.val) {
                 tmp = tmp.next;
