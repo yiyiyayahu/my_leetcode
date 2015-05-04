@@ -21,8 +21,10 @@ i: t的index（短的）
 j: s的index
 d[i][j]就是s的前j个string里面有多少个distinct subsequences of t的前i个substring
 if(t[i] != s[j]) d[i][j] = d[i][j-1] 就是这个二维数组的第i行，如果不等的话，其实就和前面的那个数字结果一样
-else            d[i][j] = d[i][j-1] + d[i-1][j-1] (这里肯定不能单纯加1啊，但是加什么呢, 就是s的前j-1个找到了多少t的前i-1个) 
-比如rab，rabb：rab里面找到了一个rab，rab里面找到了一个ra，那么rabb里面就能找到1+1=2个rab
+else            d[i][j] = d[i][j-1] + d[i-1][j-1] (这里肯定不能单纯加1啊，但是加什么呢, 就是s的前j-1个找到了多少t的前i-1个)
+就是其实至少是d[i][j-1]，然后再加上，现在t[i]和s[j]匹配，这个选择固定了，那么就看d[i-1][j-1]是多少，就加多少了
+比如rab，rabb：
+  rab里面找到了一个rab，这个时候index=3的b没用上。之后让index=3的b匹配rab里面的b，发现rab里面找到了一个ra，就是1，那么rabb里面就能找到1+1=2个rab
     rabb, rabbb: rabb里面找到了一个rabb， rabb里面找到了两个rab，总共就是3个
 */
 
