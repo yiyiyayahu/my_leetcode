@@ -47,6 +47,33 @@ sum[i,j] = ∑diff[k] where i<=k<j
 至此，两个问题都可以在一个循环中解决。 
 */
 
+/*
+唉，这个解法还是不好，应该不用分开两步写的，再想想
+*/
+public class Solution {
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        if(gas == null || cost == null) return -1;
+        if(gas.length != cost.length) return -1;
+        int n = gas.length;
+        
+        int total = 0;
+        int start = 0;
+       
+        for(int i = 0; i < n; i++) {
+        	total += gas[i] - cost[i];
+        }
+        if(total < 0) return -1;
+        total = 0;
+        for(int i = 0; i < n; i++) {
+            total += gas[i] - cost[i];
+            if(total < 0) {
+            	total = 0;
+                start = i + 1;
+            }
+        }
+        return start;
+    }
+}
 
 
 /*
