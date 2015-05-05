@@ -48,6 +48,31 @@ sum[i,j] = ∑diff[k] where i<=k<j
 */
 
 /*
+多加了一个left参数，来看看是不是leftGas = ∑diff[i] < 0
+一个total是不够的，因为如果有解的话，total确实是应该置0的，在前面的都小于0的情况下，说明一切从头开始嘛
+*/
+public class Solution {
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        if(gas == null || cost == null) return -1;
+        if(gas.length != cost.length) return -1;
+        int n = gas.length;
+        
+        int total = 0, left = 0;
+        int start = 0;
+       
+        for(int i = 0; i < n; i++) {
+            total += gas[i] - cost[i];
+            left += gas[i] - cost[i];
+            if(total < 0) {
+            	total = 0;
+                start = i + 1;
+            }
+        }
+        if(left < 0) return -1;
+        return start;
+    }
+}
+/*
 唉，这个解法还是不好，应该不用分开两步写的，再想想
 */
 public class Solution {
