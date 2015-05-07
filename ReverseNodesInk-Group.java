@@ -30,9 +30,7 @@ public class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
     	ListNode start = head, end = head;
     	int count = 0;
-    	ListNode ret = null;
-    	ListNode tail = null;
-    	ListNode tmpTail = null;
+    	ListNode ret = null, tail = null, tmpTail = null;
     	while(end != null) {
     		while(count < k && end != null) {
     			end = end.next;
