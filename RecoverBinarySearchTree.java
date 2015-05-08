@@ -11,6 +11,8 @@ A solution using O(n) space is pretty straight forward. Could you devise a const
 先写的O(n)的解法，为了保证记录之前node的顺序，所以也弄了一个ListNode<TreeNode>
 用InorderTraversal遍历。就直接写的recursive的简单解法
 O(1)的想不粗。。。
+注意两个地方：1. sort arraylist： Collections.sort(valList);而不是Arrays.sort(valList)
+              2. InorderTraversal忘记判断if(root == null) return；了。这个Node调用left,right,val之前一定要看是不是null
 */
 
 /**
