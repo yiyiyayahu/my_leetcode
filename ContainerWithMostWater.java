@@ -9,7 +9,7 @@ Note: You may not slant the container.
 public class Solution {
     
     public int maxArea(int[] height) {
-		if(height == null || height.length == 0) return 0;
+	if(height == null || height.length == 0) return 0;
         int i = 0, j = height.length - 1;
         int max = 0, tmp = 0;
         while(i < j) {
