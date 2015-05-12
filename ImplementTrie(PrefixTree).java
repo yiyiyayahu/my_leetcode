@@ -26,7 +26,6 @@ Expected:	[true,false,true,true]
 
 看看其他人的解法，再想想trie的一些扩展问题
 */
-
 class TrieNode {
     // Initialize your data structure here.
     HashMap<Character, TrieNode> map = new HashMap<Character, TrieNode>();
@@ -62,33 +61,31 @@ public class Trie {
 
     // Returns if the word is in the trie.
     public boolean search(String word) {
-        TrieNode curr = root;
-        if(word == null) return false;
-        for(int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            if(curr.map.containsKey(c)) {
-                curr = curr.map.get(c);
-            } else {
-                return false;
-            }
-        }
+        TrieNode curr = searchNode(word);
+        if(curr == null) return false;
         return curr.isLeaf;
     }
 
     // Returns if there is any word in the trie
     // that starts with the given prefix.
     public boolean startsWith(String prefix) {
+        TrieNode curr = searchNode(prefix);
+        if(curr == null) return false;
+        return true;
+    }
+    
+    public TrieNode searchNode(String word) {
         TrieNode curr = root;
-        if(prefix == null) return false;
-        for(int i = 0; i < prefix.length(); i++) {
-            char c = prefix.charAt(i);
+        if(word == null) return null;
+        for(int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
             if(curr.map.containsKey(c)) {
                 curr = curr.map.get(c);
             } else {
-                return false;
+                return null;
             }
         }
-        return true;
+        return curr;
     }
 }
 
