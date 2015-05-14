@@ -23,6 +23,8 @@ f[i][k] = Max(f[i][k-1], Max(f[i-1][k], f[j-1][k-1]+prices[i]-prices[j]))
 然后在算f[i][k]的过程中可以用一个变量来update f[j-1][k-1]-prices[j]的值
 
 还要考虑一种情况，就是如果k>=prices.length的话（还是k>=N/2就行），和II是一样的，就是transaction数目没限制了
+应该是k>=N/2就行了。因为transaction必然是有两个元素involve进去的。如果是i,i-1和i-1,i-2，那其实可以合成i和i-2嘛，就还是两个元素
+那这样看的话，最多进行N/2次transaction
 
 还是很难想的诶！！！这个递推公式我就想不出。
 为什么把Max(f[i-1][k], f[j-1][k-1]+prices[i]-prices[j]))这个放在一起，然后f[i][k-1]单独拿出来
