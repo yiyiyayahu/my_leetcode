@@ -25,7 +25,10 @@ f[i][k] = Max(f[i][k-1], Max(f[i-1][k], f[j-1][k-1]+prices[i]-prices[j]))
 还要考虑一种情况，就是如果k>=prices.length的话（还是k>=N/2就行），和II是一样的，就是transaction数目没限制了
 
 还是很难想的诶！！！这个递推公式我就想不出。
-明天写出来。然后想想，为什么把Max(f[i-1][k], f[j-1][k-1]+prices[i]-prices[j]))这个放在一起，然后f[i][k-1]单独拿出来
+为什么把Max(f[i-1][k], f[j-1][k-1]+prices[i]-prices[j]))这个放在一起，然后f[i][k-1]单独拿出来
+想了一下，应该是这样的：
+f[i][k] ： 1）只进行k-1次交易
+           2）进行k次交易：a) i is not involved b) i is involved: prices[i] - prices[j]
 
 http://www.devhui.com/2015/02/23/Best-Time-to-Buy-and-Sell-Stock/
 这篇博客总结的蛮好的
