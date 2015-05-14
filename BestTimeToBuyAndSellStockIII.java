@@ -8,7 +8,7 @@ You may not engage in multiple transactions at the same time (ie, you must sell 
 */
 
 /*
-这道题终于是自己想出来的一道题，肯定是用dp嘛
+这道题终于是自己想出来的一道题，撒花撒花撒花~~~
 max = Maths.max(dp[0,i] + dp[i,n-1]) 0<i<n-1
 然后想到两个arr，一个来存[0,i]的maxprofit，一个来存[i,n-1]的maxprofit
 比如       [2,3,1,2,4,100,7]
