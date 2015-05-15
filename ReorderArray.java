@@ -15,12 +15,12 @@ Given an array, move all the non-zero elements to the front
 其次，和面试官说明思路。这道题就是前面一个指针，后面一个指针，num[i]==0，num[j]!=0的情况下swap
 开始这道题的code我是这样写的
 while(i <= j) {
-		while(i < len && nums[i] != 0) i++;
-		while(j >= 0 && num[j] == 0) j--;
-		if(i < j) {
-  		swap(nums, i, j);
-  		i ++; j --;
-		}
+	while(i < len && nums[i] != 0) i++;
+	while(j >= 0 && num[j] == 0) j--;
+	if(i < j) {
+  	swap(nums, i, j);
+  	i ++; j --;
+	}
 }
 这样code就很乱
 后来铄姐说尽量不要while里面再套while，要加很多判断条件的
