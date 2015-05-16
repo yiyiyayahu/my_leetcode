@@ -35,13 +35,41 @@ f[i][k] ： 1）只进行k-1次交易
 http://www.devhui.com/2015/02/23/Best-Time-to-Buy-and-Sell-Stock/
 这篇博客总结的蛮好的
 */ 
-for(int i = 1; i < len; i++) {
-	for(int j = 1; j < k; j++) {
-		int maxCurr = 0 - prices[0];
-		for(int m = i-1; m > 0; m--) {
-			maxCurr = Math.max(maxCurr, f[m-1][k-1] - prices[m]);
-		}
-		if(maxCurr < f[i-1][k]) maxCurr = f[i-1][k];
-		f[i][k] = Math.max(f[i][k-1], maxCurr); 
-	}
+
+/*
+我觉得这个code应该是对的，但是TLE了
+*/
+public class Solution {
+    public int maxProfit(int k, int[] prices) {
+            if(prices == null || prices.length == 0) return 0;
+            
+            int len = prices.length;
+            if(k >= len/2) return profitNoLimit(prices);
+                
+            int[][] f = new int[len][k+1];
+            
+            for(int i = 1; i < len; i++) {
+            	for(int j = 1; j <= k; j++) {
+            		int maxCurr = 0 - prices[0];
+            		for(int m = i-1; m > 0; m--) {
+            			maxCurr = Math.max(maxCurr, f[m][j-1] - prices[m]);
+            		}
+            		maxCurr = maxCurr + prices[i];
+            		if(maxCurr < f[i-1][j]) maxCurr = f[i-1][j];
+            		f[i][j] = Math.max(f[i][j-1], maxCurr); 
+            	}
+            }
+            
+            return f[len-1][k];
+        }
+        
+        public int profitNoLimit(int[] prices) {
+            int profit = 0;
+            for(int i = 1; i < prices.length; i++) {
+                if(prices[i] > prices[i-1]) {
+                    profit += prices[i] - prices[i-1];
+                }
+            }
+            return profit;
+        }
 }
