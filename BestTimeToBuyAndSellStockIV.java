@@ -56,10 +56,10 @@ public class Solution {
             for(int j = 1; j <= k; j++) {     
             	int maxCurr = 0 - prices[0];
             	for(int i = 1; i < len; i++) {
-                          	maxCurr = Math.max(maxCurr, i > 1 ? f[i-2][j-1]-prices[i-1] : 0-prices[i-1]);
-                          	int tmp = maxCurr + prices[i];
-                          	if(tmp < f[i-1][j]) tmp = f[i-1][j];
-                          	f[i][j] = Math.max(f[i][j-1], tmp); 
+                   maxCurr = Math.max(maxCurr, i > 1 ? f[i-2][j-1]-prices[i-1] : 0-prices[i-1]);
+                   int tmp = maxCurr + prices[i];
+                   if(tmp < f[i-1][j]) tmp = f[i-1][j];
+                   f[i][j] = Math.max(f[i][j-1], tmp); 
             	}
             }
             
