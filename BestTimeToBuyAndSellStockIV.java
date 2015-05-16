@@ -35,3 +35,13 @@ f[i][k] ： 1）只进行k-1次交易
 http://www.devhui.com/2015/02/23/Best-Time-to-Buy-and-Sell-Stock/
 这篇博客总结的蛮好的
 */ 
+for(int i = 1; i < len; i++) {
+	for(int j = 1; j < k; j++) {
+		int maxCurr = 0 - prices[0];
+		for(int m = i-1; m > 0; m--) {
+			maxCurr = Math.max(maxCurr, f[m-1][k-1] - prices[m]);
+		}
+		if(maxCurr < f[i-1][k]) maxCurr = f[i-1][k];
+		f[i][k] = Math.max(f[i][k-1], maxCurr); 
+	}
+}
