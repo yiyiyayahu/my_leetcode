@@ -52,7 +52,7 @@ public class Solution {
             	for(int j = 1; j <= k; j++) {
             		int maxCurr = 0 - prices[0];
             		for(int m = i-1; m > 0; m--) {
-            			maxCurr = Math.max(maxCurr, f[m][j-1] - prices[m]);
+            			maxCurr = Math.max(maxCurr, f[m-1][j-1] - prices[m]);
             		}
             		maxCurr = maxCurr + prices[i];
             		if(maxCurr < f[i-1][j]) maxCurr = f[i-1][j];
