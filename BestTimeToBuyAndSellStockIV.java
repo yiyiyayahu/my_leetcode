@@ -37,6 +37,46 @@ http://www.devhui.com/2015/02/23/Best-Time-to-Buy-and-Sell-Stock/
 */ 
 
 /*
+下面那个code TLE的原因是，里面那层算f[j-1][k-1]-prices[j]是不必要的，在扫描i的过程中，完全可以maintain这个值
+所以其实O(kN)就可以解决的，而自己原来的做法要O(kN^2)
+但是这道题maint这个maxCurr也出了一点问题，我开始外循环是i，内循环是j，fail的地方是
+比如[6,1,3,2,4,7]到i==5，也就是7的这个位置的时候，这个maxCurr只算了f[i-2][j-1]-prices[i-1]，没有考虑i-1前面的
+后来换了一下顺序就好了
+唉，还是code写的太差，多多练习
+*/
+public class Solution {
+    public int maxProfit(int k, int[] prices) {
+            if(prices == null || prices.length == 0) return 0;
+            
+            int len = prices.length;
+            if(k >= len/2) return profitNoLimit(prices);
+                
+            int[][] f = new int[len][k+1];
+            
+            for(int j = 1; j <= k; j++) {     
+            	int maxCurr = 0 - prices[0];
+            	for(int i = 1; i < len; i++) {
+                          	maxCurr = Math.max(maxCurr, i > 1 ? f[i-2][j-1]-prices[i-1] : 0-prices[i-1]);
+                          	int tmp = maxCurr + prices[i];
+                          	if(tmp < f[i-1][j]) tmp = f[i-1][j];
+                          	f[i][j] = Math.max(f[i][j-1], tmp); 
+            	}
+            }
+            
+            return f[len-1][k];
+        }
+        
+        public int profitNoLimit(int[] prices) {
+            int profit = 0;
+            for(int i = 1; i < prices.length; i++) {
+                if(prices[i] > prices[i-1]) {
+                    profit += prices[i] - prices[i-1];
+                }
+            }
+            return profit;
+        }
+}
+/*
 我觉得这个code应该是对的，但是TLE了
 */
 public class Solution {
