@@ -31,6 +31,8 @@ Return the maximum of all those values.
 
 简单来说，大概分三步：
 1）确定min和max，然后算出bucketSize
+关于bucketSize的选择，尽可能大一些
+因为maxGap>=(max-min)/(N-1)的上限，所以bucketSize=(max-min)/(N-1)的上限
 2）遍历数组，把元素map到相应地bucket里面去，每个bucket maintain一个max和一个min
 3）扫描bucket list，算出Max(q.min - p.max)
 */
