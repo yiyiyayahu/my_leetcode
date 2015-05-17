@@ -40,10 +40,12 @@ Return the maximum of all those values.
 /*
 感觉这里用一个Bucket这样的class来做代码会简洁一点
 要注意的两点：
-1）我这个array没有初始化，也就是存在bucketList[i]==null的情况
+1）我这个array没有初始化，也就是存在bucketList[i]==null的情况，还是最好先初始化一下
 2）算pmax和qmin的时候，有可能bucketList长度为4，但是只map到第一个bucket和第四个bucket的情况，这样pmax和qmin的值要保留
-            pmax = bucketList[i] != null? bucketList[i].high : pmax;
-            qmin = bucketList[i+1] != null? bucketList[i+1].low : qmin;
+            pmax = bucketList[i].high != -1 ? bucketList[i].high : pmax;
+            qmin = bucketList[i+1].low != -1 ? bucketList[i+1].low : qmin;
+            
+代码不怎么简洁，之后再改吧
 */
 
 class Bucket{
@@ -69,24 +71,20 @@ public class Solution {
         int blistSize = (max-min)/bSize + 1;
         
         Bucket[] bucketList = new Bucket[blistSize];
+        for(int i = 0; i < blistSize; i++) {
+        	bucketList[i] = new Bucket();
+        }
         for(int i = 0; i < nums.length; i++) {
             int index = (nums[i] - min)/bSize;
             Bucket b = bucketList[index];
-            if(b == null) {
-            	b = new Bucket();
-            	b.low = nums[i]; b.high = nums[i];
-            	bucketList[index] = b;
-            	continue;
-            }
-            
-            if(nums[i] < b.low) b.low = nums[i];
-            else if(nums[i] > b.high) b.high = nums[i];
+            if(b.low == -1 || nums[i] < b.low) b.low = nums[i];
+            if(b.high == -1 || nums[i] > b.high) b.high = nums[i];
         }
         
         int pmax = 0, qmin = 0, result = 0;
         for(int i = 0; i < blistSize-1; i++) {       	
-            pmax = bucketList[i] != null? bucketList[i].high : pmax;
-            qmin = bucketList[i+1] != null? bucketList[i+1].low : qmin;
+            pmax = bucketList[i].high != -1 ? bucketList[i].high : pmax;
+            qmin = bucketList[i+1].low != -1 ? bucketList[i+1].low : qmin;
             result = Math.max(result, qmin-pmax);
         }
         return result;
