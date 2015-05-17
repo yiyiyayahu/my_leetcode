@@ -27,6 +27,12 @@ so the final answer will not be taken from two elements in the same buckets.
 
 For each non-empty buckets p, find the next non-empty buckets q, then q.min - p.max could be the potential answer to the question. 
 Return the maximum of all those values.
+
+
+简单来说，大概分三步：
+1）确定min和max，然后算出bucketSize
+2）遍历数组，把元素map到相应地bucket里面去，每个bucket maintain一个max和一个min
+3）扫描bucket list，算出Max(q.min - p.max)
 */
 /*
 下面这个是最简单的做法，先sort然后再遍历。但是不符合题目要求，这个的时间复杂度是O(nlogn)
