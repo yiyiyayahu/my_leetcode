@@ -36,6 +36,62 @@ Return the maximum of all those values.
 2）遍历数组，把元素map到相应地bucket里面去，每个bucket maintain一个max和一个min
 3）扫描bucket list，算出Max(q.min - p.max)
 */
+
+/*
+感觉这里用一个Bucket这样的class来做代码会简洁一点
+要注意的两点：
+1）我这个array没有初始化，也就是存在bucketList[i]==null的情况
+2）算pmax和qmin的时候，有可能bucketList长度为4，但是只map到第一个bucket和第四个bucket的情况，这样pmax和qmin的值要保留
+            pmax = bucketList[i] != null? bucketList[i].high : pmax;
+            qmin = bucketList[i+1] != null? bucketList[i+1].low : qmin;
+*/
+
+class Bucket{
+    int low;
+    int high;
+    public Bucket(){
+        low = -1;
+        high = -1; 
+    }
+}
+public class Solution {
+    public int maximumGap(int[] nums) {
+        if(nums == null || nums.length < 2) return 0;
+        int len = nums.length;
+        int min = nums[0], max = nums[0];
+        for(int i = 0; i < nums.length; i++) {
+            if(nums[i] < min) min = nums[i];
+            else if(nums[i] > max) max = nums[i];
+        }
+
+        int tmp = (max-min)/(len-1);
+        int bSize = (max-min)%(len-1)==0? tmp: tmp+1;
+        int blistSize = (max-min)/bSize + 1;
+        
+        Bucket[] bucketList = new Bucket[blistSize];
+        for(int i = 0; i < nums.length; i++) {
+            int index = (nums[i] - min)/bSize;
+            Bucket b = bucketList[index];
+            if(b == null) {
+            	b = new Bucket();
+            	b.low = nums[i]; b.high = nums[i];
+            	bucketList[index] = b;
+            	continue;
+            }
+            
+            if(nums[i] < b.low) b.low = nums[i];
+            else if(nums[i] > b.high) b.high = nums[i];
+        }
+        
+        int pmax = 0, qmin = 0, result = 0;
+        for(int i = 0; i < blistSize-1; i++) {       	
+            pmax = bucketList[i] != null? bucketList[i].high : pmax;
+            qmin = bucketList[i+1] != null? bucketList[i+1].low : qmin;
+            result = Math.max(result, qmin-pmax);
+        }
+        return result;
+    }
+}
 /*
 下面这个是最简单的做法，先sort然后再遍历。但是不符合题目要求，这个的时间复杂度是O(nlogn)
 */
