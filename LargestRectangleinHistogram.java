@@ -27,7 +27,17 @@ i=3: 递增，放入3
 i=4: 元素比stack.peek()小了，然后一点点pop
      先弹出index=3，算面积6*1=6
      再弹出index=2，算面积5*2=10
+     不会弹出index=1了，然后把4放入栈
+i=5: 递增，放入5
+i=6: dummy 0，把站内的index=5弹出，算面积3*1=3
+     index=4弹出，面积应该一直算到index=1前面，因为index=1就小于index=4的值了，2*3=6
+     index=1弹出，算到index=0那里，就是1*2=2
+最后发现10最大，返回
 
+由此可见，弹出算面积有两种情况：
+1）当stack是empty的时候，就前面的没有比当前弹出的h[index]更小的了, i其实等于index+1，所以面积就是h[index] * i
+2）如果stack不是empty，那当前的stack.peek()对应的值要比h[index]，所以面积应该是h[index]*(i-stack.peek()-1) (i其实等于index+1)
+这样遍历一遍就是O(n)
 
 小trick：
 可能到最后一个元素的时候，stack里面还有值，这样还要算一下，但是算的方法和前面一样。
