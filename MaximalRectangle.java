@@ -4,6 +4,7 @@ Given a 2D binary matrix filled with 0's and 1's, find the largest rectangle con
 
 /*
 参考largest rectangle，每一层其实都可以转换为largest rectangle，然后计算，再算下一层
+要注意matrix.length==0的时候要返回0，matrix=[]的话，在int cols = matrix[0].length;会出错
 时间复杂度是O(m*n)，空间复杂度是O(n)
 */
 public class Solution {
