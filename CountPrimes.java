@@ -16,9 +16,10 @@ Sieve of Eratosthenes： http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 1）p=2, 然后把2p,3p,4p....的都cross掉，因为肯定不是prime
 2）p更新成比p大的prime，重复上面操作，直到p>=n
 3）看还剩下哪些没有被cross掉的，count一下就是最终一共有多少个prime
-
-注意要审题，题目要求less than，我开始理解为了<=n，所以最开始初始化了n+1长度的boolean
-还要注意的是我开始是用的isPrime[]数组，也就是不是prime的时候设成false。可是要注意数组初始化就都是false啊，这样显然是不行的
+注意：
+1）要审题，题目要求less than，我开始理解为了<=n，所以最开始初始化了n+1长度的boolean
+2）我开始是用的isPrime[]数组，也就是不是prime的时候设成false。可是要注意数组初始化就都是false啊，这样显然是不行的
+3）p++后check notPrime[p]的时候，我要判断一下当前的p这个index是不是valid的，不然就又出现ArrayIndexOutOfBoundsException
 */
 public class Solution {
     public int countPrimes(int n) {
