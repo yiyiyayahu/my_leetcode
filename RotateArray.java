@@ -31,7 +31,9 @@ Related problem: Reverse Words in a String II
 但是不可能是一个循环就可以的啊，比如[1,2,3,4,5,6] k=2，那么1到3，3到5，5到1，这样就index==0了，循环就截止了，可视2，4，6还没有换
 但是循环多少次呢？我开始是外面加了个for(int i = 0; i < k; i++)的循环。这样显然也是不行的。。。如果k=4呢，就会多循环一圈！
 上面的解法外面加循环要加多少次我目前没想出来。。。我能想到的是要不要查查这个元素有没有遍历过，如果有，就继续，没有就算了？
-或者下面的解法，一共只可能跳len次
+或者下面的解法，一共只可能跳len次，用distance来track循环次数很make sense诶
+比如[1,2,3,4,5,6] k = 3
+distance=0 -> 3 (index+1->1开始下一轮) 0 -> 3 (index+1->2开始下一轮)
 */
 public class Solution {
     public void rotate(int[] nums, int k) {
