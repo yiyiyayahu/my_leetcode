@@ -16,7 +16,22 @@ public class Solution {
 
 /*
 这里其实理解错了，只有every element is distinct的时候才return false，我以为要所有的至少出现两次呢
+简化一下就是这样的：
 */
+
+public class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        if(nums == null || nums.length == 0) return false;
+        HashSet<Integer> set = new HashSet<Integer>();
+        for(int i = 0; i < nums.length; i++) {
+            if(set.contains(nums[i])) return true;
+            set.add(nums[i]);
+        }
+        return false;
+    }
+}
+
+
 public class Solution {
     public boolean containsDuplicate(int[] nums) {
         if(nums == null || nums.length == 0) return false;
