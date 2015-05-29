@@ -20,19 +20,20 @@ class MinStack {
 
 
     public void pop() {
-        if(stack.isEmpty()) return;
-        stack.pop();
+    	if(stack.isEmpty()) return;
         if(stack.peek() == minStack.peek()) {
-           minStack.pop();
-        }
+            minStack.pop();
+         }
+        stack.pop();
     }
 
     public int top() {
-        if(stack.isEmpty()) return Integer.MAX_VALUE;
+    	if(stack.isEmpty()) return Integer.MAX_VALUE;
         return stack.peek();
     }
 
     public int getMin() {
+    	if(stack.isEmpty()) return Integer.MAX_VALUE;
         return minStack.peek();
     }
 }
