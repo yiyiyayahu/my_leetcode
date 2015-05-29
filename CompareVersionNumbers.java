@@ -10,6 +10,10 @@ Here is an example of version numbers ordering:
 
 0.1 < 1.1 < 1.2 < 13.37
 */
+
+/*
+要注意1.0和1是相等的情况
+*/
 public class Solution {
     public int compareVersion(String version1, String version2) {
         if(version1 == null || version2 == null) return 0;
