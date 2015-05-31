@@ -26,6 +26,10 @@ or if no such sequence exists because either str is empty or it contains only wh
 If no valid conversion could be performed, a zero value is returned. 
 If the correct value is out of the range of representable values, INT_MAX (2147483647) or INT_MIN (-2147483648) is returned.
 */
+
+/*
+当年以为很麻烦的题，现在还挺好的，一次就基本过了，撒花~~~ 但是code好乱，要精简一下
+*/
 public class Solution {
     public int myAtoi(String str) {
         /*
