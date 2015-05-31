@@ -29,6 +29,7 @@ If the correct value is out of the range of representable values, INT_MAX (21474
 
 /*
 当年以为很麻烦的题，现在还挺好的，一次就基本过了，撒花~~~ 但是code好乱，要精简一下
+要注意一下Integer的limit： -2147483648， 2147483647
 */
 
 public class Solution {
