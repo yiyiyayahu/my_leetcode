@@ -33,7 +33,6 @@ If the correct value is out of the range of representable values, INT_MAX (21474
 
 public class Solution {
     public int myAtoi(String str) {
-
         if(str == null || str.length() == 0) return 0;
         
         int result = 0; boolean neg = false; int len = str.length();
