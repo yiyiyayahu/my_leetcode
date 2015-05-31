@@ -51,7 +51,7 @@ public class Solution {
         		if(!neg) return Integer.MAX_VALUE;
         		if(neg && result > limit) return Integer.MIN_VALUE;
         	}
-        	result = result * 10;
+            result = result * 10;
             result += str.charAt(i) - '0'; 
             i++;
         }
@@ -98,7 +98,7 @@ public class Solution {
         	if(neg && result > (Integer.MAX_VALUE - tmp) / 10) {
         		return Integer.MIN_VALUE;
         	}
-        	result = result * 10;
+            result = result * 10;
             result += str.charAt(i) - '0'; 
             i++;
         }
