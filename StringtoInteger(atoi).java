@@ -30,6 +30,41 @@ If the correct value is out of the range of representable values, INT_MAX (21474
 /*
 当年以为很麻烦的题，现在还挺好的，一次就基本过了，撒花~~~ 但是code好乱，要精简一下
 */
+
+public class Solution {
+    public int myAtoi(String str) {
+
+        if(str == null || str.length() == 0) return 0;
+        
+        int result = 0; boolean neg = false; int len = str.length();
+        int i = 0;
+        while(i < len && str.charAt(i) == ' ') {i++;}
+        if(i < len && str.charAt(i) == '-') {neg = true; i++;}
+        else if(i < len && str.charAt(i) == '+') {i++;}
+
+        if(i == len || !isNum(str.charAt(i))) return 0;
+        
+        while(i < len && isNum(str.charAt(i))) {
+        	int tmp = str.charAt(i) - '0';
+        	int limit = (Integer.MAX_VALUE - tmp) / 10;
+        	if(result >= limit) {
+        		if(!neg) return Integer.MAX_VALUE;
+        		if(neg && result > limit) return Integer.MIN_VALUE;
+        	}
+        	result = result * 10;
+            result += str.charAt(i) - '0'; 
+            i++;
+        }
+        if(neg) return result * (-1);
+        else return result;
+    }
+    public boolean isNum(char c) {
+        if(c >= '0' && c <= '9') return true;
+        return false;
+    }
+}
+
+
 public class Solution {
     public int myAtoi(String str) {
         /*
