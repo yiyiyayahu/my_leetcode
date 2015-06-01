@@ -6,9 +6,11 @@ You may assume that the maximum length of S is 1000, and there exists one unique
 /*
 dp的方法OK的，时间复杂度是O(n^2)空间也是O(n^2)，和找到一个center找周围的差距在于空间上
 所以之前是自己代码的问题
-if(i + 1 >= len || j - 1 <= 0) continue;只要把这一行去掉其实就可以了
+简洁点其实就是if(s.charAt(i) == s.charAt(j) && (j-i<=2 || d[i+1][j-1]== true))
+但是我发现之前的代码：
+if(i + 1 >= len || j - 1 <= 0) continue;只要把这行去掉就可以了
 首先i + 1 >= len和j - 1 <= 0，在前面的判断里面就可以被拦截下来，不用做这种判断
-但是为什么会出现TLE呢？？？continue的问题么
+但是还是觉得好神奇诶，去掉一行就防止TLE了？其实这句话根本没被执行啊？
 */
 public class Solution {
     public String longestPalindrome(String s) {
