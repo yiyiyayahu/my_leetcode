@@ -11,6 +11,7 @@ dp的方法OK的，时间复杂度是O(n^2)空间也是O(n^2)，和找到一个c
 if(i + 1 >= len || j - 1 <= 0) continue;只要把这行去掉就可以了
 首先i + 1 >= len和j - 1 <= 0，在前面的判断里面就可以被拦截下来，不用做这种判断
 但是还是觉得好神奇诶，去掉一行就防止TLE了？其实这句话根本没被执行啊？
+我觉得可能不用纠结了？leetcode只是根据时间来判断的嘛。我以前代码应该还是O(n^2)只是有些不必要的计算使得时间增大了？
 */
 public class Solution {
     public String longestPalindrome(String s) {
