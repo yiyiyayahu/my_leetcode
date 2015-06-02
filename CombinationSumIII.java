@@ -50,17 +50,17 @@ public class Solution {
     public void helper(int k, int n, int curr, List<Integer> list, List<List<Integer>> lists) {
     	if(k == 0) {
     		if(n == 0) {
-    			ArrayList<Integer> l = new ArrayList<Integer>(list);
-    			lists.add(l); 
+	    		ArrayList<Integer> l = new ArrayList<Integer>(list);
+	    		lists.add(l); 
     		}
     		return;
     	} 
-		for(int i = curr; i <= 9; i++) {
-			if(i > n) continue;
-			list.add(i);
-			helper(k-1, n-i, i+1, list, lists);
-			list.remove(list.size()-1);
-		}
+	for(int i = curr; i <= 9; i++) {
+		if(i > n) continue;
+		list.add(i);
+		helper(k-1, n-i, i+1, list, lists);
+		list.remove(list.size()-1);
+	}
     }    
     
 }
