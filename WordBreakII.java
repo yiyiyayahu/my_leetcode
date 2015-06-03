@@ -11,6 +11,11 @@ dict = ["cat", "cats", "and", "sand", "dog"].
 A solution is ["cats and dog", "cat sand dog"]. 
 */
 
+/*
+还是一样的recursion，只是加了一步剪枝，并且优化了一下代码，没有用List<String>来存中间的变量
+用一个boolean array来记录。开始notFound都是false，但是循环过一圈之后要是还没找到就设成true，下次碰到这个就不找了，避免了一些重复工作
+TLE的那个case是一个比较tricky的case，string很长，但其实是找不到wordbreak的
+*/
 public class Solution {
     public List<String> wordBreak(String s, Set<String> wordDict) {
         List<String> result = new ArrayList<String>();
