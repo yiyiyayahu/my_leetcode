@@ -12,6 +12,33 @@ Return 4.
 */
 
 /*
+简化为一维数组dp[]和一个int pre，其实只需要知道上面的和左边的值
+很巧妙诶，参考别人写出来的
+*/
+public class Solution {
+    public int maximalSquare(char[][] matrix) {
+      if(matrix == null || matrix.length == 0) return 0;
+      int rows = matrix.length, cols = matrix[0].length;
+      int maxSize = 0, pre = 0;
+    
+      int[] dp = new int[rows+1];
+      for(int j = 0; j < cols; j++) {
+        for(int i = 1; i <= rows; i++) {
+          int tmp = dp[i];
+          if(matrix[i-1][j] == '1') {
+            dp[i] = Math.min(dp[i], Math.min(dp[i-1], pre)) + 1;
+            maxSize = Math.max(dp[i], maxSize);
+          } else {
+            dp[i] = 0;
+          }
+          pre = tmp;
+        }
+      }
+      return maxSize * maxSize;
+    }
+}
+
+/*
 dp的做法：
 dp[0][j]= matrix[0][j]-'0'
 dp[i][0] = matrix[i][0]-'0'
