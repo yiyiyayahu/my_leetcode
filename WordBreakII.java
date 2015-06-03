@@ -11,6 +11,35 @@ dict = ["cat", "cats", "and", "sand", "dog"].
 A solution is ["cats and dog", "cat sand dog"]. 
 */
 
+public class Solution {
+    public List<String> wordBreak(String s, Set<String> wordDict) {
+        List<String> result = new ArrayList<String>();
+        if(s == null || s.length() == 0) return result;
+        if(wordDict == null || wordDict.size() == 0) return result;
+        boolean[] notFound = new boolean[s.length()+1];
+        helper(s, wordDict, 0, new StringBuilder(), result, notFound);
+        return result;
+    }
+    public void helper(String s, Set<String> wordDict, int index, StringBuilder sb, List<String> result, boolean[] notFound) {
+        if(index == s.length()) {
+            sb.deleteCharAt(sb.length()-1);
+            result.add(sb.toString());
+            return;
+        }
+        for(int i = index; i < s.length(); i++) {
+            String s1 = s.substring(index, i+1);
+            StringBuilder tmp = new StringBuilder(sb);
+            if(wordDict.contains(s1) && !notFound[i+1]) {
+                sb.append(s1).append(" ");
+                int preSize = result.size();
+                helper(s, wordDict, i+1, sb, result, notFound);
+                if(result.size() == preSize) notFound[i+1] = true;
+                sb = tmp;
+            }
+        }
+    }
+}
+
 /*
 TLE了。。。杯具，呜呜
 */
