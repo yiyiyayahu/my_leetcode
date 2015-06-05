@@ -22,7 +22,10 @@ All words contain only lowercase alphabetic characters.
 /*
 啊，终于写完了，这道题也太难了！！！！
 主要是要自己建个图，把之前的path存起来，然后再重建
-其实我自己还是有些地方没有完全想清楚，现在只是代码过了而已
+喔喔，然后这个和i很像嘛，就是找到了就返回对吧，那就是最小path，不用再去比较len之类的
+就在	if(begin.equals(end))这里直接就找到全部路径返回了
+因为我是一层一层下来的嘛。在这个level找到了就直接返回了？
+再想想
 */
 class Node {
 	String str;
@@ -53,30 +56,30 @@ public class Solution {
 
 		while(!queue.isEmpty()) {
 			String begin = queue.remove();
-    		if(begin.equals(end)) {
-    			getPaths(map.get(end), new ArrayList<String>(), ret);
-    			return ret;
-    		}
-            Set<String> set = oneLetterDiffSet(begin);
-            for(String s : set) {
-            	if(dict.contains(s)) {
-            		Node n = map.get(begin);
-            		if(!map.containsKey(s)) {                   			                   			
-            			Node newNode = new Node(s, n.dist+1);
-            			newNode.addPreNode(n);
-            			map.put(s, newNode);
-            			queue.add(s);
-            		} else {
-            			Node curr = map.get(s);
-            			if(curr.dist == n.dist+1) {
-            				curr.addPreNode(n);
-            			}
-            		}
-            	}
+		    	if(begin.equals(end)) {
+		    		getPaths(map.get(end), new ArrayList<String>(), ret);
+		    		return ret;
+		    	}
+        		Set<String> set = oneLetterDiffSet(begin);
+        		for(String s : set) {
+			    	if(dict.contains(s)) {
+			    		Node n = map.get(begin);
+			    		if(!map.containsKey(s)) {                   			                   			
+			    			Node newNode = new Node(s, n.dist+1);
+			    			newNode.addPreNode(n);
+			    			map.put(s, newNode);
+			    			queue.add(s);
+			    		} else {
+			    			Node curr = map.get(s);
+			    			if(curr.dist == n.dist+1) {
+			    				curr.addPreNode(n);
+			    			}
+			    		}
+	            		}
                               
 			}
-		}
-		return ret;
+	}
+	return ret;
     }
     
     public void getPaths(Node n, ArrayList<String> list, List<List<String>> ret) {		
