@@ -44,7 +44,7 @@ public class Solution {
             if(newInterval.end < curr.start && !added) {
             	ret.add(newInterval);
             	added = true;
-            } else if(newInterval.start > curr.end || added) {
+            } else if(added || newInterval.start > curr.end) {
                 ret.add(curr);
                 i++;
             } else {              
