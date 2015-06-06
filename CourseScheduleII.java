@@ -26,6 +26,7 @@ Topological sort could also be done via BFS.
 
 /*
 这里fail的一个test case是党prerequisites是空的时候，还是要输出的，而且有好多种可能。我开始直接返回了new int[0]，是不对的
+用BFS做CourseScheduleI就简单多了，这里只要在每层加入ret就可以了
 */
 
 public class Solution {
