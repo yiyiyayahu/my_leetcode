@@ -62,3 +62,49 @@ public class Solution {
         return true;
     }
 }
+
+/*
+更新一下BFS的做法，可能对于II更有用，需要用到一个HashMap方便后面查找下一层（有点像重建个小graph），和一个计算in-degree的数组
+这道题因为[0,1]表示1是0的prerequisite，所以其实是1->0，这里1是起点，in-degree暂时为0，但是0的in-degree就是1
+这道题是先从in-degree为0的（也就是各个起点）找起，向下找每一层，对于下面每一层的degree--，如果是0再push进queue
+如果全部找完了，还是有degree不为0的，那么就是有cycle了
+*/
+
+public class Solution {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+    	if(prerequisites.length == 0 || prerequisites[0].length == 0) return true;
+    	int[] degree = new int[numCourses];
+    	HashMap<Integer, ArrayList<Integer>> graph = new HashMap<Integer, ArrayList<Integer>>();
+    	for(int i = 0; i < prerequisites.length; i++) {
+    		int key = prerequisites[i][1];
+    		ArrayList<Integer> list;
+    		
+    		if(graph.containsKey(key)) list = graph.get(key);
+    		else list = new ArrayList<Integer>();
+    		
+			list.add(prerequisites[i][0]);
+			graph.put(key, list);
+			
+    		degree[prerequisites[i][0]] ++;
+    	}
+    	System.out.println(graph);
+    	Queue<Integer> queue = new LinkedList<Integer>();
+    	for(int i = 0; i < numCourses; i++) {
+    		if(degree[i] == 0) queue.add(i);
+    	}
+    	while(!queue.isEmpty()) {
+    		int start = queue.remove();
+    		if(!graph.containsKey(start)) continue;
+    		for(int next : graph.get(start)) {
+    			degree[next] --;
+    			if(degree[next] == 0) {
+    				queue.add(next);
+    			} 
+    		}
+    	}
+    	for(int i = 0; i < numCourses; i++) {
+    		if(degree[i] > 0) return false;
+    	}
+    	return true;
+    }
+}
