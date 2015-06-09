@@ -13,6 +13,9 @@ Another corner case is the path might contain multiple slashes '/' together, suc
 In this case, you should ignore redundant slashes and return "/home/foo".
 */
 
+/*
+这里要注意一下，如果stack.isEmpty()的话是要返回"/"的
+*/
 public class Solution {
     public String simplifyPath(String path) {
         String[] arr = path.split("/+");
