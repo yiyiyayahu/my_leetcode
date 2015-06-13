@@ -26,7 +26,7 @@ public class Solution {
     			String s1 = String.valueOf(a) + String.valueOf(b);
     			String s2 = String.valueOf(b) + String.valueOf(a);
     			
-    			return s2.compareTo(s1); //s1>s2 positive s1=343 s2=334 return 1
+    			return s2.compareTo(s1); //s2>s1 positive s1=334 s2=343 return 1,所以排序是3,43 因为其实是要倒序嘛
     		}
     	});
     	StringBuilder sb = new StringBuilder();
