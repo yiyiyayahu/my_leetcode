@@ -1,9 +1,10 @@
 /*
-DFS: 会出现RuntimeError当这个array很大的时候
+DFS: 会出现RuntimeError当这个array很大的时候 
+(这个是因为recursive要占额外内存，和时间复杂度没关系，其实不用加visited数组的，
+而且也没意义，碰到O才处理嘛，#的就表示已经visited过了)
 是这样想的，从最外面的一圈开始，如果碰到O，就把它周围的O标记成#
-然后再遍历这个array，把O变成X
-再遍历一遍，把#还原
-感觉会出现很多重复的诶。。。囧，因为DFS很有可能visit过某个点，要不要再加个visited函数试试？
+然后再遍历这个array，把O变成X，同时把#还原
+
 或者试试BFS
 */
 public class Solution {
