@@ -24,6 +24,8 @@ Some examples:
 开始想的是，
 stack push进去，如果遇到)，stack就pop，同时计算，直到pop出（为止
 遇到+号就只要把之前的number放进去，遇到-号就isNeg=true，后面的数字乘以-1放进去，但是如果stack只放Integer的话，（）怎么办
+
+为什么我怎么改我自己的代码都是不对！！！郁闷了，这道题好难做啊，还是自己太弱了
 */
 public class Solution {
     public int calculate(String s) {
