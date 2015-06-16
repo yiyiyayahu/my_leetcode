@@ -54,3 +54,7 @@ public class Solution {
         return false;
     }
 }
+/*
+http://blog.csdn.net/linhuanmars/article/details/21145563
+还有递归的方法，更快
+*/
