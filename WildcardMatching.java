@@ -37,30 +37,38 @@ if(p[j] != '*')思路差不多 （但是这里为毛线从后面往前面走啊�
 if(p[j] == '*') 就一直从前面往后走，只要碰到res[i]=true的，那后面就都是true的了
 
 唉，还是不太懂这道题的逻辑，好难啊啊啊啊啊
+
+后来又想了一下，就懂了，很巧妙的做法
+比如aaa和a*a
+开始的数组是 T F F F (p相当于“”, s分别相当于"","a","aa","aaa")
+j=0时应该是  F T F F （p="a", s: "", "a", "aa", "aaa"）
+但是如果开始是从左往右的话，就都会变成T T T T，因为这是滚动数组，会把上一行的结果覆盖掉，从右往左是个好方法，记得之前还有一道简单题是这样做的
+j=1（p="a*", s: "", "a", "aa", "aaa"）那么就是从上一行是T的位置开始后面就都是T了对吧
+注意每次要更新下res[0] = res[0]&&p.charAt(j)=='*'，不然res[0]就一直是T了，因为i+1一直从1开始，就不会更新res[0]
 */
 
 public class Solution {
     public boolean isMatch(String s, String p) {
-		int slen = s.length(), plen = p.length();
-		if(plen == 0) return slen==0;
+	int slen = s.length(), plen = p.length();
+	if(plen == 0) return slen==0;
 
-		if(slen>300 && p.charAt(0)=='*' && p.charAt(p.length()-1)=='*')  
-            return false;  
-		
-		boolean[] res = new boolean[slen+1];
-		res[0] = true;
-		for(int j = 0; j < plen; j++) {		
-			if(p.charAt(j) != '*') {
-				for(int i=slen-1;i>=0;i--) {	
-					res[i+1] = res[i] && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '?');	
-				}
-			} else {		
-				int i = 0;
-				while(i <= slen && !res[i]) i++;
-				for(; i<=slen; i++) res[i] = true;				
-			}	
-			res[0] = res[0]&&p.charAt(j)=='*';
-		}
-		return res[slen];  
+	if(slen>300 && p.charAt(0)=='*' && p.charAt(p.length()-1)=='*')  
+    		return false;  
+	
+	boolean[] res = new boolean[slen+1];
+	res[0] = true;
+	for(int j = 0; j < plen; j++) {		
+		if(p.charAt(j) != '*') {
+			for(int i=slen-1;i>=0;i--) {	
+				res[i+1] = res[i] && (s.charAt(i) == p.charAt(j) || p.charAt(j) == '?');	
+			}
+		} else {		
+			int i = 0;
+			while(i <= slen && !res[i]) i++;
+			for(; i<=slen; i++) res[i] = true;				
+		}	
+		res[0] = res[0]&&p.charAt(j)=='*';
+	}
+	return res[slen];  
     }
 }
