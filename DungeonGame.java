@@ -41,6 +41,33 @@ dp[i][j] = min(dp[i+1][j], dp[i][j+1]) + dungeon[i][j] * (-1) 如果当前格子
 所以最终结果是7
 这道题还可以缩减为一维dp的，用滚动数组来做。代码再简化一下
 */
+/*
+这个是一维的，注意考虑if(i == rows-1) prev = hp[j+1];这种情况
+开始fail在[0,-3] 我直接返回1了。。囧
+其实很多人dp会再加一行这样，但是我可能不太习惯
+*/
+public class Solution {
+    public int calculateMinimumHP(int[][] dungeon) {
+        if(dungeon.length == 0) return 0;
+        int rows = dungeon.length, cols = dungeon[0].length;
+        int[] hp = new int[cols];
+        for(int i = rows-1; i >= 0; i--) {
+            for(int j = cols-1; j>= 0; j--) {
+                int prev = 0;
+                if(j == cols-1) prev = hp[j];
+                else if(i == rows-1) prev = hp[j+1];
+                else prev = Math.min(hp[j], hp[j+1]);
+                if(dungeon[i][j] < 0) hp[j] = prev + dungeon[i][j]*(-1);
+                else {
+                    if(dungeon[i][j] > prev) hp[j] = 0;
+                    else hp[j] = prev - dungeon[i][j];
+                }
+            }
+        }
+        return hp[0]+1;
+    }
+}
+
 public class Solution {
     public int calculateMinimumHP(int[][] dungeon) {
         if(dungeon.length == 0) return 0;
