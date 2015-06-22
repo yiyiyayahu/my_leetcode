@@ -18,6 +18,52 @@ Note: Do not use the eval built-in library function.
 这道题的重点是，把prefix改成postfix！！！
 怎么改明天再想想！！！
 */
+
+	public static List<Object> infixToPostfix(String s) {
+		s = s.replaceAll(" ", "");
+		
+		Stack<Character> stack = new Stack<Character>();
+		List<Object> list = new ArrayList<Object>();
+		int number = 0;
+		boolean isNumberBefore = false;
+		for(int i = 0; i < s.length(); i++) {
+			char c = s.charAt(i);
+
+			if(Character.isDigit(c)) {
+				number = number * 10 + c - '0';
+				isNumberBefore = true;
+				if(i == s.length() - 1) list.add(number);
+			} else {
+				if(isNumberBefore) {
+					list.add(number);
+					number = 0;
+					isNumberBefore = false;
+				}
+				if(stack.isEmpty()) stack.push(c);
+				else {					
+					while(!stack.isEmpty() && getCode(stack.peek()) >= getCode(c)) {
+						list.add(stack.pop());
+					}
+					stack.push(c);
+				}
+			}
+		}
+		while(!stack.isEmpty()) {
+			list.add(stack.pop());
+		}
+		return list;
+	}
+
+	public static int getCode(char c) {
+		switch(c) {
+			case '+': return 1;
+			case '-': return 1;
+			case '*': return 2;
+			case '/': return 2;
+			default: return 0;
+		}
+	}
+
 public class Solution {
     public int calculate(String s) {
     	List<Object> postfix = infixToPostfix(s);
