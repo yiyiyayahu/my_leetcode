@@ -4,6 +4,12 @@ Given n points on a 2D plane, find the maximum number of points that lie on the 
 
 /*
 看两个点斜率，如果斜率相同就在一条直线上
+用一个map来存和当前点的斜率对应的count
+注意两点：
+1. 和当前点重合的点，用一个duplicate的变量来track
+2. vertical，斜率标记为Integer.MAX_VALUE
+3. horizontal，这里很神奇的是，居然可以有0.0和-0.0，所以后来统一检测认为是0.0
+4. 有可能全部是重复的点，map为空
 */
 
 /**
