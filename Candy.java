@@ -16,14 +16,14 @@ http://fisherlei.blogspot.com/2013/11/leetcode-candy-solution.html
 水中的鱼里面的配图特别好
 
 如果这样想：
-if(candy[i] > candy[i-1) candy[i] = candy[i-1] + 1
+if(candy[i] > candy[i-1]) candy[i] = candy[i-1] + 1
 else if(candy[i] == candy[i-1) candy[i] = 1
 else candy[i] = candy[i-1] - 1
 但是有几个问题
 比如ratings是[1,4,3,2,1,2]这种的
 这样做出来的就是[1,2,1,0,-1,0]，显然是invalid的，应该转成[1,4,3,2,1,2]
-另外一种是：[1,2,3,4.3,2,3]
-这样做出来的是[1,2,3,4.3,2,3]，但是其实这样就多了，应该是[1,2,3,4.2,1,2]
+另外一种是：[1,2,3,4,3,2,3]
+这样做出来的是[1,2,3,4,3,2,3]，但是其实这样就多了，应该是[1,2,3,4,2,1,2]
 
 但是如何解决这个问题呢，我开始想的是，只要找到这个1的位置就好了。但是怎么找也成了问题
 后来看人家的blog说可以像trapping rain water那样，第一次从左往右，第二次从右往左
